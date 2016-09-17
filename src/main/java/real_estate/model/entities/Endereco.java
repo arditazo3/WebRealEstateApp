@@ -41,7 +41,7 @@ public class Endereco implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_region_key")
     @JoinColumn(name = "id_type_region", referencedColumnName = "id_type_region")
-    private TipoLogradouro type_region;
+    private TypeRegion type_region;
     
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_nation_key")
@@ -51,18 +51,18 @@ public class Endereco implements Serializable {
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_type_address")
     @JoinColumn(name = "id_type_address", referencedColumnName="id_type_address")
-    private TipoEndereco type_address;
+    private TypeAddress type_address;
     
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_city_key")
     @JoinColumn(name = "id_city", referencedColumnName="id_city")
-    private Cidade city;
+    private City city;
 
     public Endereco() {
-        this.city = new Cidade();
+        this.city = new City();
         this.nation = new Estado();
-        this.type_region = new TipoLogradouro();
-        this.type_address = new TipoEndereco();
+        this.type_region = new TypeRegion();
+        this.type_address = new TypeAddress();
         this.user = new User();
     }    
     
@@ -130,27 +130,27 @@ public class Endereco implements Serializable {
         this.nation = nation;
     }
 
-    public TipoEndereco getTipoendereco() {
+    public TypeAddress getTipoendereco() {
         return type_address;
     }
 
-    public void setTipoendereco(TipoEndereco type_address) {
+    public void setTipoendereco(TypeAddress type_address) {
         this.type_address = type_address;
     }
 
-    public TipoLogradouro getTipologradouro() {
+    public TypeRegion getTipologradouro() {
         return type_region;
     }
 
-    public void setTipologradouro(TipoLogradouro type_region) {
+    public void setTipologradouro(TypeRegion type_region) {
         this.type_region = type_region;
     }
 
-    public Cidade getCidade() {
+    public City getCidade() {
         return city;
     }
 
-    public void setCidade(Cidade city) {
+    public void setCidade(City city) {
         this.city = city;
     }
 

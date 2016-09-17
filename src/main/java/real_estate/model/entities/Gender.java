@@ -13,38 +13,38 @@ import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table(name="gender")
-public class Sexo implements Serializable {
+public class Gender implements Serializable {
     
     private static final long serialVersionUID =  1L;   
     
     @Id
     @GeneratedValue
     @Column(name="id_gender",nullable=false)
-    private Integer idSexo;
+    private Integer idGender;
     @Column(name="description", unique=true, nullable=false, length=9)
-    private String descricao;
+    private String description;
 
     @OneToMany(mappedBy = "gender", fetch = FetchType.LAZY)
     @ForeignKey(name = "user_gender_key")
     private List<User> pessoas;
     
-    public Sexo() {
+    public Gender() {
     }
 
-    public Integer getIdSexo() {
-        return idSexo;
+    public Integer getIdGender() {
+        return idGender;
     }
 
-    public void setIdSexo(Integer idSexo) {
-        this.idSexo = idSexo;
+    public void setIdGender(Integer idGender) {
+        this.idGender = idGender;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<User> getUsers() {
@@ -58,7 +58,7 @@ public class Sexo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + (this.idSexo != null ? this.idSexo.hashCode() : 0);
+        hash = 97 * hash + (this.idGender != null ? this.idGender.hashCode() : 0);
         return hash;
     }
 
@@ -70,8 +70,8 @@ public class Sexo implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Sexo other = (Sexo) obj;
-        if (this.idSexo != other.idSexo && (this.idSexo == null || !this.idSexo.equals(other.idSexo))) {
+        final Gender other = (Gender) obj;
+        if (this.idGender != other.idGender && (this.idGender == null || !this.idGender.equals(other.idGender))) {
             return false;
         }
         return true;

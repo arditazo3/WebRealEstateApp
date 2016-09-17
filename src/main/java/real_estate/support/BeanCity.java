@@ -2,7 +2,7 @@ package real_estate.support;
 
 import real_estate.model.dao.HibernateDAO;
 import real_estate.model.dao.InterfaceDAO;
-import real_estate.model.entities.Cidade;
+import real_estate.model.entities.City;
 import real_estate.util.FacesContextUtil;
 
 import java.io.Serializable;
@@ -10,15 +10,15 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-@ManagedBean(name="bbCidade")
+@ManagedBean(name="beanCity")
 @RequestScoped
-public class BbCidade  implements Serializable {
+public class BeanCity implements Serializable {
     
     private static final long serialVersionUID = 1L;
-    private List<Cidade> cidades;
+    private List<City> cities;
 
-    public List<Cidade> getCidades() {
-        InterfaceDAO<Cidade> cidadeDAO = new HibernateDAO<Cidade>(Cidade.class, FacesContextUtil.getRequestSession());
-        return cidadeDAO.getEntities();
+    public List<City> getCities() {
+        InterfaceDAO<City> cityDAO = new HibernateDAO<City>(City.class, FacesContextUtil.getRequestSession());
+        return cityDAO.getEntities();
     }
 }

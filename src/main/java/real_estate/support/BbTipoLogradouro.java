@@ -2,7 +2,7 @@ package real_estate.support;
 
 import real_estate.model.dao.HibernateDAO;
 import real_estate.model.dao.InterfaceDAO;
-import real_estate.model.entities.TipoLogradouro;
+import real_estate.model.entities.TypeRegion;
 import real_estate.util.FacesContextUtil;
 import java.io.Serializable;
 import java.util.List;
@@ -16,9 +16,9 @@ public class BbTipoLogradouro  implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
-    public List<TipoLogradouro> getTipoLogradouros() {
+    public List<TypeRegion> getTipoLogradouros() {
         Session session = FacesContextUtil.getRequestSession();
-        InterfaceDAO<TipoLogradouro> tipoLogradouroDAO = new HibernateDAO<TipoLogradouro>(TipoLogradouro.class, session);
+        InterfaceDAO<TypeRegion> tipoLogradouroDAO = new HibernateDAO<TypeRegion>(TypeRegion.class, session);
         return tipoLogradouroDAO.getEntities();
     }
 }

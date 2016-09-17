@@ -27,8 +27,8 @@
                                              required="true" requiredMessage="Name required"/>
 
                                 <h:outputLabel for="gender" value="Gender.:"/>
-                                <p:selectOneMenu id="gender" value="#{controllerUser.user.sexo.idSexo}">
-                                    <f:selectItems value="#{bbSexo.sexos}" var="sexo" itemValue="#{sexo.idSexo}" itemLabel="#{sexo.descricao}"/>
+                                <p:selectOneMenu id="gender" value="#{controllerUser.user.gender.idGender}">
+                                    <f:selectItems value="#{beanGender.genders}" var="gender" itemValue="#{gender.idGender}" itemLabel="#{gender.description}"/>
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="phone" value="Phone.:"/>
@@ -43,7 +43,7 @@
 
                                 <h:outputLabel for="cpf" value="CPF.:"/>
                                 <p:inputText id="cpf" size="40" value="#{controllerUser.user.cpf}"
-                                             required="true" requiredMessage="[CPF] required">
+                                             required="true" requiredMessage="CPF required">
                                     <!--<f:validator validatorId="cpfValidator"/>-->
                                 </p:inputText>
 
@@ -82,9 +82,9 @@
 
 
                                 <h:outputLabel for="city" value="City.:" />
-                                <p:selectOneMenu id="city" value="#{controllerUser.endereco.cidade.idCidade}">
-                                    <f:selectItems value="#{bbCidade.cidades}" var="cidade"
-                                                   itemValue="#{cidade.idCidade}" itemLabel="#{cidade.nome}"/>
+                                <p:selectOneMenu id="city" value="#{controllerUser.endereco.cidade.idCity}">
+                                    <f:selectItems value="#{beanCity.cities}" var="city"
+                                                   itemValue="#{city.idCidade}" itemLabel="#{city.name}"/>
                                 </p:selectOneMenu>
 
 

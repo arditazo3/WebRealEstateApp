@@ -11,7 +11,7 @@
     <ui:define name="tasks">
         <h:form>
             <p:growl id="msg0"/>
-            <p:dataTable id="idTabela" var="user" value="#{controllerUser.users}"
+            <p:dataTable id="idTable" var="user" value="#{controllerUser.users}"
                          paginator="true" rows="10" emptyMessage="Nenhum registro encontrado"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
                          {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -43,7 +43,7 @@
                     <f:facet name="header">
                         <h:outputText value="City"/>
                     </f:facet>
-                    <h:outputText value="#{user.endereco.cidade.nome}"/>
+                    <h:outputText value="#{user.endereco.cidade.name}"/>
                 </p:column>
 
                 <p:column>

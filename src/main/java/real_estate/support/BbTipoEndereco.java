@@ -2,7 +2,7 @@ package real_estate.support;
 
 import real_estate.model.dao.HibernateDAO;
 import real_estate.model.dao.InterfaceDAO;
-import real_estate.model.entities.TipoEndereco;
+import real_estate.model.entities.TypeAddress;
 import real_estate.util.FacesContextUtil;
 import java.io.Serializable;
 import java.util.List;
@@ -16,9 +16,9 @@ public class BbTipoEndereco  implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
-    public List<TipoEndereco> getTipoEnderecos() {
+    public List<TypeAddress> getTipoEnderecos() {
         Session session = FacesContextUtil.getRequestSession();
-        InterfaceDAO<TipoEndereco> tipoEnderecoDAO = new HibernateDAO<TipoEndereco>(TipoEndereco.class, session);
+        InterfaceDAO<TypeAddress> tipoEnderecoDAO = new HibernateDAO<TypeAddress>(TypeAddress.class, session);
         return tipoEnderecoDAO.getEntities();
     }
 }

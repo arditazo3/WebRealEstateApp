@@ -31,12 +31,12 @@
         <property name="c3p0.idle_test_period">300</property>
         
         <!-- LISTA DE ENTIDADES -->
-        <mapping class="real_estate.model.entities.Cidade"/>
+        <mapping class="real_estate.model.entities.City"/>
         <mapping class="real_estate.model.entities.Endereco"/>
         <mapping class="real_estate.model.entities.Estado"/>
         <mapping class="real_estate.model.entities.User"/>
-        <mapping class="real_estate.model.entities.Sexo"/>
-        <mapping class="real_estate.model.entities.TipoEndereco"/>
-        <mapping class="real_estate.model.entities.TipoLogradouro"/>
+        <mapping class="real_estate.model.entities.Gender"/>
+        <mapping class="real_estate.model.entities.TypeAddress"/>
+        <mapping class="real_estate.model.entities.TypeRegion"/>
     </session-factory>
 </hibernate-configuration>

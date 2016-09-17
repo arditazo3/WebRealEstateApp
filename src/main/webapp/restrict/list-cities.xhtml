@@ -18,17 +18,16 @@
                         <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
                             
                             <h:outputLabel/>
-                            <h:inputHidden id="idcidade" value="#{mbCidade.cidade.idCidade}"/> 
+                            <h:inputHidden id="idCity" value="#{manBeanCity.city.idCity}"/>
                             
-                            <h:outputLabel for="nomecidade" value="Name.:"/>
-                            <p:inputText id="nomecidade" size="40" value="#{mbCidade.cidade.nome}"
-                                onkeyup="this.value = this.value.toUpperCase()" required="true"
-                                requiredMessage="Name required."/>
+                            <h:outputLabel for="nameCity" value="Name.:"/>
+                            <p:inputText id="nameCity" size="40" value="#{manBeanCity.city.name}"
+                                         required="true" requiredMessage="Name required."/>
                             
                             <p:panel>
-                                <p:commandButton value="Save" action="#{mbCidade.addCidade}"
+                                <p:commandButton value="Save" action="#{manBeanCity.addCity}"
                                     image="ui-icon ui-icon-disk" update="@form :formtable"/>
-                                <p:commandButton value="Cancel" actionListener="#{mbCidade.limpCidade}"
+                                <p:commandButton value="Cancel" actionListener="#{manBeanCity.limpCity}"
                                     image="ui-icon ui-icon-close" update="@form"/>
                             </p:panel>
                         </h:panelGrid>
@@ -38,7 +37,7 @@
             
             <h:form id="formtable">
                 <p:growl id="msg1"/>
-                <p:dataTable id="idTabela" var="cidade" value="#{mbCidade.cidades}"
+                <p:dataTable id="idTable" var="city" value="#{manBeanCity.cities}"
                              paginator="true" rows="10" emptyMessage="Nenhum registro encontrado"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
                              {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -49,7 +48,7 @@
                         <f:facet name="header">
                             <h:outputText value="Name"/>
                         </f:facet>
-                        <h:outputText value="#{cidade.nome}"/>
+                        <h:outputText value="#{city.name}"/>
                     </p:column>
                     
                     <p:column>
@@ -58,13 +57,13 @@
                         </f:facet>
                         <p:commandButton value="Edit" image="ui-icon ui-icon-pencil"
                                 process="@this" update=":tbv1:formCidade">
-                            <f:setPropertyActionListener target="#{mbCidade.cidade}"
-                                value="#{cidade}"/>
+                            <f:setPropertyActionListener target="#{manBeanCity.city}"
+                                value="#{city}"/>
                         </p:commandButton>
-                        <p:commandButton value="Remove" action="#{mbCidade.deleteCidade}"
+                        <p:commandButton value="Remove" action="#{manBeanCity.deleteCity}"
                                 image="ui-icon ui-icon-close" update="@form">
-                            <f:setPropertyActionListener target="#{mbCidade.cidade}"
-                                value="#{cidade}"/>
+                            <f:setPropertyActionListener target="#{manBeanCity.city}"
+                                value="#{city}"/>
                         </p:commandButton>
                         
                     </p:column>

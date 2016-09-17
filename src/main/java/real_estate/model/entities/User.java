@@ -54,10 +54,10 @@ public class User implements Serializable {
     @ManyToOne(optional=false)
     @ForeignKey(name = "user_gender_key")
     @JoinColumn(name="id_gender", referencedColumnName = "id_gender")
-    private Sexo gender;
+    private Gender gender;
 
     public User() {
-        this.gender = new Sexo();
+        this.gender = new Gender();
     }
 
     public Integer getIdUser() {
@@ -116,11 +116,11 @@ public class User implements Serializable {
         this.dateRegister = dateRegister;
     }
 
-    public Sexo getSexo() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setSexo(Sexo gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

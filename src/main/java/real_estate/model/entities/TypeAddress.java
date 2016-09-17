@@ -13,7 +13,7 @@ import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table(name="type_address")
-public class TipoEndereco implements Serializable {
+public class TypeAddress implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
@@ -28,7 +28,7 @@ public class TipoEndereco implements Serializable {
     @ForeignKey(name="address_type_address_key")
     private List<Endereco> enderecos;
 
-    public TipoEndereco() {
+    public TypeAddress() {
     }
 
     public String getDescricaoTipoEndereco() {
@@ -63,7 +63,7 @@ public class TipoEndereco implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final TipoEndereco other = (TipoEndereco) obj;
+        final TypeAddress other = (TypeAddress) obj;
         if (this.idTipoEndereco != other.idTipoEndereco && (this.idTipoEndereco == null || !this.idTipoEndereco.equals(other.idTipoEndereco))) {
             return false;
         }

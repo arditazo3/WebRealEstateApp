@@ -13,38 +13,38 @@ import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table(name="city")
-public class Cidade implements Serializable{
+public class City implements Serializable{
     
     private static final long serialVersionUID =  1L; 
     
     @Id
     @GeneratedValue
     @Column(name="id_city", nullable=false)
-    private Integer idCidade;
+    private Integer idCity;
     @Column(name="name", length=80, nullable=false)
-    private String nome;
+    private String name;
 
     @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     @ForeignKey(name="address_city_key")
     private List<Endereco> enderecos;
     
-    public Cidade() {
+    public City() {
     }
 
-    public Integer getIdCidade() {
-        return idCidade;
+    public Integer getIdCity() {
+        return idCity;
     }
 
-    public void setIdCidade(Integer idCidade) {
-        this.idCidade = idCidade;
+    public void setIdCity(Integer idCity) {
+        this.idCity = idCity;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Endereco> getEnderecos() {
@@ -58,7 +58,7 @@ public class Cidade implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + (this.idCidade != null ? this.idCidade.hashCode() : 0);
+        hash = 89 * hash + (this.idCity != null ? this.idCity.hashCode() : 0);
         return hash;
     }
 
@@ -70,8 +70,8 @@ public class Cidade implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Cidade other = (Cidade) obj;
-        if (this.idCidade != other.idCidade && (this.idCidade == null || !this.idCidade.equals(other.idCidade))) {
+        final City other = (City) obj;
+        if (this.idCity != other.idCity && (this.idCity == null || !this.idCity.equals(other.idCity))) {
             return false;
         }
         return true;
