@@ -10,7 +10,7 @@
     <h:head>
         <title>UNYT - Web Real Estate</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="#{facesContext.externalContext.requestContextPath}/resources/restrict/css/semeru.css" rel="stylesheet" type="text/css" />
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/restrict/css/myStyle.css" rel="stylesheet" type="text/css" />
         <link href="#{facesContext.externalContext.requestContextPath}/resources/restrict/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />    
     </h:head>
 
@@ -38,11 +38,11 @@
 
                     <p:submenu label="Records">
                         <p:menuitem value="Cities" url="/restrict/list-cities.faces"/>
-                        <p:menuitem value="Users" action="#{controllerUser.limpUser}" ajax="false"/>
+                        <p:menuitem value="Users" action="#{controllerUser.cancelUser}" ajax="false"/>
                     </p:submenu>
 
-                    <p:submenu label="Consultas">
-                        <p:menuitem value="Users" url="/restrict/consultarpessoas.faces"/>
+                    <p:submenu label="Consultations">
+                        <p:menuitem value="Users" url="/restrict/cities.faces"/>
                     </p:submenu>                                      
                 </p:menubar> 
             </h:form>           
@@ -55,10 +55,10 @@
         </div>
 
         <div id="footer">
-            <a href="http://www.google.com/"><img src="#{facesContext.externalContext.requestContextPath}/resources/restrict/images/logo_mini.png" /></a>
+            <a href="/restrict/home.faces"><img src="#{facesContext.externalContext.requestContextPath}/resources/restrict/images/logo_mini.png" /></a>
 
             <div id="copyright">                  
-                <a href="http://www.google.com/">Web Real Estate App - &copy; Copyright 2016</a>
+                <a href="/restrict/home.faces">Web Real Estate App - &copy; Copyright 2016</a>
             </div>
         </div>
 

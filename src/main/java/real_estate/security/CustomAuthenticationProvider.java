@@ -13,12 +13,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        System.out.println("O Login do cara é: " + authentication.getName());
+        System.out.println("Username: " + authentication.getName());
         List<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
-        //Use assim se você usa o Spring Security 3.0.5.RELEASE
         auth.add(new GrantedAuthorityImpl("ROLE_USER"));
-        //Já na versão 3.1.3.RELEASE essa classe foi depreciada e você deve usar como no trecho abaixo  
-        //auth.add(new SimpleGrantedAuthority("ROLE_USER"));
         if (authentication.getName().equals(authentication.getCredentials())) {
             return new UsernamePasswordAuthenticationToken(authentication.getName(), authentication.getCredentials(), auth);
         } else {

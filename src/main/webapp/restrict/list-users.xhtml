@@ -82,7 +82,7 @@
 
 
                                 <h:outputLabel for="city" value="City.:" />
-                                <p:selectOneMenu id="city" value="#{controllerUser.address.cidade.idCity}">
+                                <p:selectOneMenu id="city" value="#{controllerUser.address.city.idCity}">
                                     <f:selectItems value="#{beanCity.cities}" var="city"
                                                    itemValue="#{city.idCity}" itemLabel="#{city.name}"/>
                                 </p:selectOneMenu>
@@ -94,32 +94,32 @@
 
                                 <h:outputLabel for="type_address" value="Type of address.:"/>
                                 <p:selectOneMenu id="type_address" value="#{controllerUser.address.tipoendereco.idTipoEndereco}">
-                                    <f:selectItems value="#{manBeanTypeAddress.tipoEnderecos}" var="tipoEndereco"
-                                                   itemValue="#{tipoEndereco.idTipoEndereco}" itemLabel="#{tipoEndereco.descricaoTipoEndereco}"/>
+                                    <f:selectItems value="#{manBeanTypeAddress.typeAddress}" var="typeAddress"
+                                                   itemValue="#{typeAddress.idTypeAddress}" itemLabel="#{typeAddress.descrTypeAddress}"/>
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="type_region" value="Type of Region.:"/>
-                                <p:selectOneMenu id="type_region" value="#{controllerUser.address.tipologradouro.idTipoLogradouro}">
-                                    <f:selectItems value="#{manBeanTypeRegion.tipoLogradouros}" var="tipoLogradouro"
-                                                   itemValue="#{tipoLogradouro.idTipoLogradouro}" itemLabel="#{tipoLogradouro.descricaoTipoLogradouro}"/>
+                                <p:selectOneMenu id="type_region" value="#{controllerUser.address.typeRegion.idTypeRegion}">
+                                    <f:selectItems value="#{manBeanTypeRegion.typeRegions}" var="typeRegions"
+                                                   itemValue="#{typeRegions.idTypeRegion}" itemLabel="#{typeRegions.descrTypeRegion}"/>
                                 </p:selectOneMenu>
 
-                                <h:outputLabel for="nomelogradouro" value="Logradouro.:"/>
-                                <p:inputText id="nomelogradouro" size="75" value="#{controllerUser.address.region}" />
+                                <h:outputLabel for="nameRegion" value="Region.:"/>
+                                <p:inputText id="nameRegion" size="75" value="#{controllerUser.address.region}" />
 
-                                <h:outputLabel for="cep" value="CEP.:"/>
-                                <p:inputMask id="cep" size="10" value="#{controllerUser.address.codeStreet}" mask="99999999" />
+                                <h:outputLabel for="codeStreet" value="Code Street:"/>
+                                <p:inputMask id="codeStreet" size="10" value="#{controllerUser.address.codeStreet}" mask="99999999" />
 
-                                <h:outputLabel for="numero" value="Numero.:"/>
-                                <p:inputText id="numero" size="8" value="#{controllerUser.address.regionNumber}" />
+                                <h:outputLabel for="regionNumber" value="Region Number.:"/>
+                                <p:inputText id="regionNumber" size="8" value="#{controllerUser.address.regionNumber}" />
 
-                                <h:outputLabel for="complemento" value="Complemento.:"/>
-                                <p:inputText id="complemento" size="20" value="#{controllerUser.address.zip}"/>
+                                <h:outputLabel for="zip" value="ZIP.:"/>
+                                <p:inputText id="zip" size="20" value="#{controllerUser.address.zip}"/>
 
                                 <p:panel>
                                     <p:commandButton value="Save" action="#{controllerUser.addUser}"
                                                      image="ui-icon ui-icon-disk" update="@form"/>
-                                    <p:commandButton value="Cancel" actionListener="#{controllerUser.limpUser}"
+                                    <p:commandButton value="Cancel" actionListener="#{controllerUser.cancelUser}"
                                                      image="ui-icon ui-icon-close" update="@form"/>
                                 </p:panel>
                             </h:panelGrid>

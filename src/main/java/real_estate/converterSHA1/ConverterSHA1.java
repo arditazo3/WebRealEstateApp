@@ -1,4 +1,4 @@
-package real_estate.conversores;
+package real_estate.converterSHA1;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

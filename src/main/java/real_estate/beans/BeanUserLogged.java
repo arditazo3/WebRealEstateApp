@@ -1,4 +1,4 @@
-package real_estate.support;
+package real_estate.beans;
 
 import real_estate.model.entities.User;
 import real_estate.util.FacesContextUtil;

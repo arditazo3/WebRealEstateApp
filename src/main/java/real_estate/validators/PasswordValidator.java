@@ -33,8 +33,7 @@ public class PasswordValidator implements Validator {
                 num++;
             }
         }
-        System.out.println("Foram encontrados "+num+" numeros na senha!");                                        
-        
+
         for(int i=0;i<password.length();i++) {
             for(int j=0;j<caracteresEspeciais.length;j++) {
                 if(password.charAt(i)==caracteresEspeciais[j]) {
@@ -42,8 +41,7 @@ public class PasswordValidator implements Validator {
                 }
             }
         }
-        System.out.println("Foram encontrados "+carac+" caracteres especias na senha!");
-        
+
         // verify the password
         if(password == null || password.equals("")){
              throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, 

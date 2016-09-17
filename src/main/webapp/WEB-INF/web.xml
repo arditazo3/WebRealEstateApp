@@ -28,6 +28,7 @@
     </context-param> 
 
     <!-- Configuration themes of PrimeFaces -->
+
     <context-param>  
         <param-name>primefaces.THEME</param-name>  
         <param-value>sam</param-value>  

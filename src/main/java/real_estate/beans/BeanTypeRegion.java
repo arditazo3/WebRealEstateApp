@@ -1,8 +1,8 @@
-package real_estate.support;
+package real_estate.beans;
 
 import real_estate.model.dao.HibernateDAO;
 import real_estate.model.dao.InterfaceDAO;
-import real_estate.model.entities.TypeAddress;
+import real_estate.model.entities.TypeRegion;
 import real_estate.util.FacesContextUtil;
 import java.io.Serializable;
 import java.util.List;
@@ -10,15 +10,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.hibernate.Session;
 
-@ManagedBean(name="manBeanTypeAddress")
+@ManagedBean(name="manBeanTypeRegion")
 @RequestScoped
-public class BeanTypeAddress implements Serializable {
+public class BeanTypeRegion implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
-    public List<TypeAddress> getTypeAddress() {
+    public List<TypeRegion> getTypeRegions() {
         Session session = FacesContextUtil.getRequestSession();
-        InterfaceDAO<TypeAddress> typeAddressDAO = new HibernateDAO<TypeAddress>(TypeAddress.class, session);
-        return typeAddressDAO.getEntities();
+        InterfaceDAO<TypeRegion> typeRegionDAO = new HibernateDAO<TypeRegion>(TypeRegion.class, session);
+        return typeRegionDAO.getEntities();
     }
 }

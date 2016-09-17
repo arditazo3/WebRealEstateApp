@@ -57,12 +57,12 @@
                         <f:setPropertyActionListener value="#{user.idUser}" target="#{controllerUser.user.idUser}"/>
                         <f:setPropertyActionListener value="#{user.address}" target="#{controllerUser.address}"/>
                         <f:setPropertyActionListener value="#{user.address.nation.idNation}" target="#{controllerUser.address.nation.idNation}"/>
-                        <f:setPropertyActionListener value="#{user.address.cidade.idCidade}" target="#{controllerUser.address.cidade.idCidade}"/>
-                        <f:setPropertyActionListener value="#{user.address.tipoendereco.idTipoEndereco}" target="#{controllerUser.address.tipoendereco.idTipoEndereco}"/>
-                        <f:setPropertyActionListener value="#{user.address.tipologradouro.idTipoLogradouro}" target="#{controllerUser.address.tipologradouro.idTipoLogradouro}"/>
+                        <f:setPropertyActionListener value="#{user.address.city.idCity}" target="#{controllerUser.address.city.idCity}"/>
+                        <f:setPropertyActionListener value="#{user.address.typeAddress.idTypeAddress}" target="#{controllerUser.address.typeAddress.idTypeAddress}"/>
+                        <f:setPropertyActionListener value="#{user.address.typeRegion.idTypeRegion}" target="#{controllerUser.address.typeRegion.idTypeRegion}"/>
                     </p:commandButton>
                     
-                    <p:commandButton value="Cancel" action="#{controllerUser.limpUser}"
+                    <p:commandButton value="Cancel" action="#{controllerUser.cancelUser}"
                                      image="ui-icon ui-icon-close" update="@form"/>
 
                 </p:column>

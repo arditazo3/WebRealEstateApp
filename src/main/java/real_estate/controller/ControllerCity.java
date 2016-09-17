@@ -29,7 +29,7 @@ public class ControllerCity implements Serializable {
         return cityDAO;
     }
 
-    public String limpCity() {
+    public String cancelCity() {
         city = new City();
         return editCity();
     }
@@ -44,20 +44,20 @@ public class ControllerCity implements Serializable {
         } else {
             updateCity();
         }
-        limpCity();
+        cancelCity();
         return null;
     }
 
     private void insertCity() {
         cityDAO().save(city);
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso", ""));
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserted successfully", ""));
     }
 
     private void updateCity() {
         cityDAO().update(city);
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualização efetuada com sucesso", ""));
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Updated successfully", ""));
     }
     
     public void deleteCity(){

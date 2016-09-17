@@ -7,10 +7,9 @@ import org.hibernate.Session;
 
 public class PhaseListenerSemeru implements PhaseListener {
 
-    //Antes da Fase
     @Override
     public void beforePhase(PhaseEvent fase) {
-        System.out.println("Antes da fase: "+ fase.getPhaseId());
+        System.out.println("Previous step: "+ fase.getPhaseId());
         if (fase.getPhaseId().equals(PhaseId.RESTORE_VIEW)) {            
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
@@ -18,10 +17,9 @@ public class PhaseListenerSemeru implements PhaseListener {
         }
     }
     
-    //Depois da Fase
     @Override
     public void afterPhase(PhaseEvent fase) {
-        System.out.println("Depois da fase: "+ fase.getPhaseId());
+        System.out.println("Next step: "+ fase.getPhaseId());
         if (fase.getPhaseId().equals(PhaseId.RENDER_RESPONSE)) {
             Session session = FacesContextUtil.getRequestSession();
             try {

@@ -1,6 +1,6 @@
 package real_estate.controller;
 
-import real_estate.conversores.ConverterSHA1;
+import real_estate.converterSHA1.ConverterSHA1;
 import real_estate.model.dao.HibernateDAO;
 import real_estate.model.dao.InterfaceDAO;
 import real_estate.model.entities.Address;
@@ -34,12 +34,12 @@ public class ControllerUser implements Serializable {
         return userDao;
     }
 
-    private InterfaceDAO<Address> enderecoDAO() {
-        InterfaceDAO<Address> enderecoDAO = new HibernateDAO<Address>(Address.class, FacesContextUtil.getRequestSession());
-        return enderecoDAO;
+    private InterfaceDAO<Address> addressDAO() {
+        InterfaceDAO<Address> addressDAO = new HibernateDAO<Address>(Address.class, FacesContextUtil.getRequestSession());
+        return addressDAO;
     }
 
-    public String limpUser() {
+    public String cancelUser() {
         user = new User();
         address = new Address();
         return editUser();
@@ -67,7 +67,7 @@ public class ControllerUser implements Serializable {
             user.setPermission("ROLE_ADMIN");
             userDAO().save(user);
             address.setUser(user);
-            enderecoDAO().save(address);
+            addressDAO().save(address);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "User saved successful", ""));
         } else {
@@ -78,16 +78,16 @@ public class ControllerUser implements Serializable {
 
     private void updateUser() {
         userDAO().update(user);
-        enderecoDAO().update(address);
+        addressDAO().update(address);
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualização efetuada com sucesso", ""));
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Updated successfully", ""));
     }
 
     public String deleteUser() {
         userDAO().remove(user);
-        enderecoDAO().remove(address);
+        addressDAO().remove(address);
         FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro excluído com sucesso", ""));
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Deleted successfully", ""));
         return null;
     }
 
@@ -101,7 +101,7 @@ public class ControllerUser implements Serializable {
     }
 
     public List<Address> getAddresses() {
-        addresses = enderecoDAO().getEntities();
+        addresses = addressDAO().getEntities();
         return addresses;
     }
 

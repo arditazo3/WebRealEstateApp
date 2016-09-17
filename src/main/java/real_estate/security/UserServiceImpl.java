@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserDetailsService, Serializable {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         if (username != null && username.isEmpty()) {
-            throw new UsernameNotFoundException("Usuario nao encontrado!");
+            throw new UsernameNotFoundException("User not found!");
         } else {
             try {
                 User usuario = findUser(username);
@@ -37,10 +37,9 @@ public class UserServiceImpl implements UserDetailsService, Serializable {
                 boolean accountNonLocked = true; //userBean.isActive()
 
                 Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-                //Use assim se você usa o Spring Security 3.0.5.RELEASE
+
                 authorities.add(new GrantedAuthorityImpl(usuario.getPermission()));
-                //Já na versão 3.1.3.RELEASE essa classe foi depreciada e você deve usar como no trecho abaixo
-                //authorities.add(new SimpleGrantedAuthority(usuario.getPermissao()));
+
                 org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(
                         login,
                         password,
@@ -58,16 +57,14 @@ public class UserServiceImpl implements UserDetailsService, Serializable {
     }
 
     public User findUser(String login) {
-        String stringQuery = "from User pessoa where pessoa.username = "+ login;
-//        return pessoaDAO().getEntityByHQLQuery(stringQuery);
+        String stringQuery = "from User user where user.username = "+ login;
         Session session = FacesContextUtil.getRequestSession();
         Query query = session.createQuery(stringQuery);
-        //query.setString(0, login);
         return (User) query.uniqueResult();
     }
     
-    private InterfaceDAO<User> pessoaDAO() {
-        InterfaceDAO<User> pessoaDAO = new HibernateDAO<User>(User.class, FacesContextUtil.getRequestSession());
-        return pessoaDAO;
+    private InterfaceDAO<User> userDAO() {
+        InterfaceDAO<User> userDAO = new HibernateDAO<User>(User.class, FacesContextUtil.getRequestSession());
+        return userDAO;
     }
 }

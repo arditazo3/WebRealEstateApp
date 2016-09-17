@@ -9,13 +9,12 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-/** Validador responsável por garantir que o email
- *  digitado seja um email válido
+/** The email Vaildator
  */
 @FacesValidator(value="emailValidator")
 public class EmailValidator implements Validator{
 
-        @Override
+    @Override
 	public void validate(FacesContext facesContext, 
         UIComponent uIComponent, Object object) throws ValidatorException {
         
@@ -31,8 +30,8 @@ public class EmailValidator implements Validator{
         
         if (!matchFound) {
             FacesMessage message = new FacesMessage();
-            message.setDetail("E-mail incorreto!");
-            message.setSummary("E-mail incorreto!");
+            message.setDetail("E-mail not correct!");
+            message.setSummary("E-mail not correct!");
             message.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(message);
         }

@@ -20,9 +20,9 @@ public class TypeAddress implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id_type_address", nullable = false)
-    private Integer idTipoEndereco;
+    private Integer idTypeAddress;
     @Column(name = "descr_type_address", nullable = false, length = 35)
-    private String descricaoTipoEndereco;
+    private String descrTypeAddress;
     
     @OneToMany(mappedBy = "type_address", fetch = FetchType.LAZY)
     @ForeignKey(name="address_type_address_key")
@@ -31,12 +31,12 @@ public class TypeAddress implements Serializable {
     public TypeAddress() {
     }
 
-    public String getDescricaoTipoEndereco() {
-        return descricaoTipoEndereco;
+    public String getDescrTypeAddress() {
+        return descrTypeAddress;
     }
 
-    public void setDescricaoTipoEndereco(String descricaoTipoEndereco) {
-        this.descricaoTipoEndereco = descricaoTipoEndereco;
+    public void setDescrTypeAddress(String descrTypeAddress) {
+        this.descrTypeAddress = descrTypeAddress;
     }
 
     public List<Address> getAddresses() {
@@ -47,12 +47,12 @@ public class TypeAddress implements Serializable {
         this.addresses = addresses;
     }
 
-    public Integer getIdTipoEndereco() {
-        return idTipoEndereco;
+    public Integer getIdTypeAddress() {
+        return idTypeAddress;
     }
 
-    public void setIdTipoEndereco(Integer idTipoEndereco) {
-        this.idTipoEndereco = idTipoEndereco;
+    public void setIdTypeAddress(Integer idTypeAddress) {
+        this.idTypeAddress = idTypeAddress;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class TypeAddress implements Serializable {
             return false;
         }
         final TypeAddress other = (TypeAddress) obj;
-        if (this.idTipoEndereco != other.idTipoEndereco && (this.idTipoEndereco == null || !this.idTipoEndereco.equals(other.idTipoEndereco))) {
+        if (this.idTypeAddress != other.idTypeAddress && (this.idTypeAddress == null || !this.idTypeAddress.equals(other.idTypeAddress))) {
             return false;
         }
         return true;
@@ -73,7 +73,7 @@ public class TypeAddress implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + (this.idTipoEndereco != null ? this.idTipoEndereco.hashCode() : 0);
+        hash = 97 * hash + (this.idTypeAddress != null ? this.idTypeAddress.hashCode() : 0);
         return hash;
     }
 }

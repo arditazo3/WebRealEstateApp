@@ -13,7 +13,7 @@
             <br/>
             <p:tabView id="tbv1" dynamic="true" cache="true">
                 <p:tab title="City">
-                    <h:form prependId="false" id="formCidade">
+                    <h:form prependId="false" id="formCity">
                         <p:growl id="msg0"/>
                         <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
                             
@@ -27,7 +27,7 @@
                             <p:panel>
                                 <p:commandButton value="Save" action="#{manBeanCity.addCity}"
                                     image="ui-icon ui-icon-disk" update="@form :formtable"/>
-                                <p:commandButton value="Cancel" actionListener="#{manBeanCity.limpCity}"
+                                <p:commandButton value="Cancel" actionListener="#{manBeanCity.cancelCity}"
                                     image="ui-icon ui-icon-close" update="@form"/>
                             </p:panel>
                         </h:panelGrid>
@@ -38,7 +38,7 @@
             <h:form id="formtable">
                 <p:growl id="msg1"/>
                 <p:dataTable id="idTable" var="city" value="#{manBeanCity.cities}"
-                             paginator="true" rows="10" emptyMessage="Nenhum registro encontrado"
+                             paginator="true" rows="10" emptyMessage="None city registerd"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
                              {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
@@ -56,7 +56,7 @@
                             <h:outputText value="Actions"/>
                         </f:facet>
                         <p:commandButton value="Edit" image="ui-icon ui-icon-pencil"
-                                process="@this" update=":tbv1:formCidade">
+                                process="@this" update=":tbv1:formCity">
                             <f:setPropertyActionListener target="#{manBeanCity.city}"
                                 value="#{city}"/>
                         </p:commandButton>

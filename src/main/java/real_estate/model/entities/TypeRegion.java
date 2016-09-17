@@ -20,9 +20,9 @@ public class TypeRegion implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id_type_region", nullable = false)
-    private Integer idTipoLogradouro;
+    private Integer idTypeRegion;
     @Column(name = "descr_type_region", nullable = false, length = 40)
-    private String descricaoTipoLogradouro;
+    private String descrTypeRegion;
     
     @OneToMany(mappedBy = "type_region", fetch = FetchType.LAZY)
     @ForeignKey(name = "id_type_region")
@@ -31,12 +31,12 @@ public class TypeRegion implements Serializable {
     public TypeRegion() {
     }
 
-    public String getDescricaoTipoLogradouro() {
-        return descricaoTipoLogradouro;
+    public String getDescrTypeRegion() {
+        return descrTypeRegion;
     }
 
-    public void setDescricaoTipoLogradouro(String descricaoTipoLogradouro) {
-        this.descricaoTipoLogradouro = descricaoTipoLogradouro;
+    public void setDescrTypeRegion(String descrTypeRegion) {
+        this.descrTypeRegion = descrTypeRegion;
     }
 
     public List<Address> getAddresses() {
@@ -47,12 +47,12 @@ public class TypeRegion implements Serializable {
         this.addresses = addresses;
     }
 
-    public Integer getIdTipoLogradouro() {
-        return idTipoLogradouro;
+    public Integer getIdTypeRegion() {
+        return idTypeRegion;
     }
 
-    public void setIdTipoLogradouro(Integer idTipoLogradouro) {
-        this.idTipoLogradouro = idTipoLogradouro;
+    public void setIdTypeRegion(Integer idTypeRegion) {
+        this.idTypeRegion = idTypeRegion;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class TypeRegion implements Serializable {
             return false;
         }
         final TypeRegion other = (TypeRegion) obj;
-        if (this.idTipoLogradouro != other.idTipoLogradouro && (this.idTipoLogradouro == null || !this.idTipoLogradouro.equals(other.idTipoLogradouro))) {
+        if (this.idTypeRegion != other.idTypeRegion && (this.idTypeRegion == null || !this.idTypeRegion.equals(other.idTypeRegion))) {
             return false;
         }
         return true;
@@ -73,7 +73,7 @@ public class TypeRegion implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 53 * hash + (this.idTipoLogradouro != null ? this.idTipoLogradouro.hashCode() : 0);
+        hash = 53 * hash + (this.idTypeRegion != null ? this.idTypeRegion.hashCode() : 0);
         return hash;
     }
 }
