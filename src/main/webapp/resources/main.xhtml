@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Semeru - Curso de JSF e Maven</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/restrict/css/semeru.css" rel="stylesheet" type="text/css" />
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/restrict/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />    
+    </h:head>
+
+    <h:body>
+
+        <div id="topo">
+            <a href="http://www.google.com/"><div id="logotipo"></div></a>
+                        
+            <div id="logoff">
+                <h:form>
+                    <br/>
+                    <h5><h:outputText value="Welcome #{bbUsuarioLogado.procuraPessoa().getNome()}"/></h5>
+                    <br/>
+                    <a href="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">
+	                <h4>Log Out</h4>
+	            </a>
+
+                </h:form>
+            </div>
+        </div>  
+
+        <div id="menu"><!-- Menu -->
+            <h:form>    
+                <p:menubar styleClass="labelmenu">
+
+                    <p:submenu label="Records">
+                        <p:menuitem value="Cities" url="/restrict/cadastrarcidade.faces"/>
+                        <p:menuitem value="Users" action="#{mbPessoa.limpPessoa}" ajax="false"/>
+                    </p:submenu>
+
+                    <p:submenu label="Consultas">
+                        <p:menuitem value="Users" url="/restrict/consultarpessoas.faces"/>
+                    </p:submenu>                                      
+                </p:menubar> 
+            </h:form>           
+        </div>
+
+        <!-- Menu-->
+
+        <div id="tarefas">
+            <ui:insert name="tarefas"></ui:insert>
+        </div>
+
+        <div id="rodape">
+            <a href="http://www.google.com/"><img src="#{facesContext.externalContext.requestContextPath}/resources/restrict/images/logo_mini.png" /></a>
+
+            <div id="copyright">                  
+                <a href="http://www.google.com/">Web Real Estate App - &copy; Copyright 2016</a>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>

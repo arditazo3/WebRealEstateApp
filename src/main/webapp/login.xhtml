@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sec="http://www.springframework.org/security/facelets/tags">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/restrict/css/erudio.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/restrict/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <title>Login</title>
+    </h:head>
+    <h:body onload="dialog.login.j_username.focus()">
+
+        <div id="topo">
+            <div id="logotipo"></div>
+            
+            <div id="logoff">
+  
+            </div>  
+        </div>       
+
+        <div id="conteudo" title="Log in Panel">
+            <h:form>
+                <p:growl id="msg" rendered="#{param.erro}">#{msgs.erro_message}</p:growl>
+            </h:form>
+
+            <p:dialog header="Log in Panel"
+                      id="dialog"  
+                      modal="true"
+                      minWidth="335"
+                      width="400"
+                      closable="false"
+                      position="center"
+                      widgetVar="modalLogin"
+                      showEffect="slide" 
+                      draggable="false"
+                      resizable="false"
+                      visible="true">
+
+
+                <form action="j_spring_security_check" method="post" id="login">
+                    <h:panelGrid columns="2" cellpadding="3">
+                        <h:outputLabel for="j_username" value="username: " />
+                        <h:inputText id="j_username" required="true"/>
+                        <h:outputLabel for="j_password" value="password: " />
+                        <h:inputSecret id="j_password" required="true"/>
+                        <h:commandButton value="Log In"/>
+                    </h:panelGrid>
+                </form>
+            </p:dialog>  
+        </div>
+
+        <!-- Start Footer -->
+
+        <div id="rodape">
+            <a href="http://www.google.com/"><img src="./resources/restrict/images/logo_mini.png" /></a>
+
+            <div id="copyright">                  
+                <a href="http://www.google.com/">Web Real Estate App - &copy; Copyright 2016</a>
+            </div>
+        </div> <!-- End Footer -->
+
+    </h:body>
+</html>
