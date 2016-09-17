@@ -34,7 +34,7 @@
         <mapping class="real_estate.model.entities.Cidade"/>
         <mapping class="real_estate.model.entities.Endereco"/>
         <mapping class="real_estate.model.entities.Estado"/>
-        <mapping class="real_estate.model.entities.Pessoa"/>
+        <mapping class="real_estate.model.entities.User"/>
         <mapping class="real_estate.model.entities.Sexo"/>
         <mapping class="real_estate.model.entities.TipoEndereco"/>
         <mapping class="real_estate.model.entities.TipoLogradouro"/>

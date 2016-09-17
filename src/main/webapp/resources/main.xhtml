@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <title>UNYT - Web Real Estate App</title>
+        <title>UNYT - Web Real Estate</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="#{facesContext.externalContext.requestContextPath}/resources/restrict/css/semeru.css" rel="stylesheet" type="text/css" />
         <link href="#{facesContext.externalContext.requestContextPath}/resources/restrict/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />    
@@ -16,13 +16,13 @@
 
     <h:body>
 
-        <div id="topo">
-            <a href="http://www.google.com/"><div id="logotipo"></div></a>
+        <div id="top">
+            <a href="/restrict/home.faces"><div id="logotop"></div></a>
                         
             <div id="logoff">
                 <h:form>
                     <br/>
-                    <h5><h:outputText value="Welcome #{bbUsuarioLogado.procuraPessoa().getNome()}"/></h5>
+                    <h5><h:outputText value="Welcome #{manBeanUserLogged.getUserLogged().getName()}"/></h5>
                     <br/>
                     <a href="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">
 	                <h4>Log Out</h4>
@@ -37,8 +37,8 @@
                 <p:menubar styleClass="labelmenu">
 
                     <p:submenu label="Records">
-                        <p:menuitem value="Cities" url="/restrict/cadastrarcidade.faces"/>
-                        <p:menuitem value="Users" action="#{mbPessoa.limpPessoa}" ajax="false"/>
+                        <p:menuitem value="Cities" url="/restrict/list-cities.faces"/>
+                        <p:menuitem value="Users" action="#{controllerUser.limpUser}" ajax="false"/>
                     </p:submenu>
 
                     <p:submenu label="Consultas">
@@ -50,11 +50,11 @@
 
         <!-- Menu-->
 
-        <div id="tarefas">
-            <ui:insert name="tarefas"></ui:insert>
+        <div id="tasks">
+            <ui:insert name="tasks"></ui:insert>
         </div>
 
-        <div id="rodape">
+        <div id="footer">
             <a href="http://www.google.com/"><img src="#{facesContext.externalContext.requestContextPath}/resources/restrict/images/logo_mini.png" /></a>
 
             <div id="copyright">                  

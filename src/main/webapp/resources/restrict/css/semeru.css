@@ -11,23 +11,23 @@ body {
     background-color:#FFF;
 }
 
-#topo{
-   width:auto;
-   height:130px;
+#top{
+   width: 100%;
+   height:220px;
    margin:0;
    padding:0;
-   background-image: url(../images/topo.jpg); 
+   background-image: url(../images/top.jpg);
    
 }
 
-#topo h1{
+#top h1{
    width:238px;
    height:34px;
    margin:40px 0 0 0;
 
 }
 
-#logotipo{
+#logotop{
    float:left ;
    width:270px;
    height:100px;
@@ -87,7 +87,7 @@ body {
     
 }
 
-#tarefas{
+#tasks{
    width:1260px;
    min-height: 642px;
    margin:3px;
@@ -240,8 +240,8 @@ label {
 }
 
 #top {
-	width:680px;
-	height:50px;
+	width:100%;
+	height:170px;
 }
 
 caption{
@@ -250,7 +250,7 @@ caption{
 	letter-spacing:-1px;
 }
 
-#rodape{
+#footer{
    width:1200px;
    height:34px;
    clear:both;
@@ -264,12 +264,12 @@ caption{
 
 }
 
-#rodape #copyright {
+#footer #copyright {
     color: #630;
     background-image: url(../images/background.png); 
 }
 
-#img-rodape{
+#img-footer{
    float:left;
    margin:0 0 0 8px;
    background:#CC3;
@@ -303,7 +303,7 @@ background:transparent;
 
 }
 
-#conteudo{
+#content{
    width:1260px;
    min-height: 650px;
    background-image: url(../images/background.png); 

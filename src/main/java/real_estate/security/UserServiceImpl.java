@@ -2,7 +2,7 @@ package real_estate.security;
 
 import real_estate.model.dao.HibernateDAO;
 import real_estate.model.dao.InterfaceDAO;
-import real_estate.model.entities.Pessoa;
+import real_estate.model.entities.User;
 import real_estate.util.FacesContextUtil;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,7 +11,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,10 +27,10 @@ public class UserServiceImpl implements UserDetailsService, Serializable {
             throw new UsernameNotFoundException("Usuario nao encontrado!");
         } else {
             try {
-                Pessoa usuario = findUser(username);
+                User usuario = findUser(username);
 
-                String login = usuario.getLogin();
-                String password = usuario.getSenha();
+                String login = usuario.getUsername();
+                String password = usuario.getPassword();
                 boolean enabled = true; //userBean.isActive()
                 boolean accountNonExpired = true;//userBean.isActive()
                 boolean credentialsNonExpired = true; //userBean.isActive()
@@ -39,10 +38,10 @@ public class UserServiceImpl implements UserDetailsService, Serializable {
 
                 Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
                 //Use assim se você usa o Spring Security 3.0.5.RELEASE
-                authorities.add(new GrantedAuthorityImpl(usuario.getPermissao()));
+                authorities.add(new GrantedAuthorityImpl(usuario.getPermission()));
                 //Já na versão 3.1.3.RELEASE essa classe foi depreciada e você deve usar como no trecho abaixo
                 //authorities.add(new SimpleGrantedAuthority(usuario.getPermissao()));
-                User user = new User(
+                org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(
                         login,
                         password,
                         enabled,
@@ -58,17 +57,17 @@ public class UserServiceImpl implements UserDetailsService, Serializable {
 
     }
 
-    public Pessoa findUser(String login) {
-        String stringQuery = "from Pessoa pessoa where pessoa.login = "+ login;
+    public User findUser(String login) {
+        String stringQuery = "from User pessoa where pessoa.username = "+ login;
 //        return pessoaDAO().getEntityByHQLQuery(stringQuery);
         Session session = FacesContextUtil.getRequestSession();
         Query query = session.createQuery(stringQuery);
         //query.setString(0, login);
-        return (Pessoa) query.uniqueResult();
+        return (User) query.uniqueResult();
     }
     
-    private InterfaceDAO<Pessoa> pessoaDAO() {
-        InterfaceDAO<Pessoa> pessoaDAO = new HibernateDAO<Pessoa>(Pessoa.class, FacesContextUtil.getRequestSession());
+    private InterfaceDAO<User> pessoaDAO() {
+        InterfaceDAO<User> pessoaDAO = new HibernateDAO<User>(User.class, FacesContextUtil.getRequestSession());
         return pessoaDAO;
     }
 }

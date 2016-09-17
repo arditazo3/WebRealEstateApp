@@ -8,10 +8,10 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="./../resources/main.xhtml">
 
-    <ui:define name="tarefas">
+    <ui:define name="tasks">
         <h:form>
             <p:growl id="msg0"/>
-            <p:dataTable id="idTabela" var="pessoa" value="#{mbPessoa.pessoas}"
+            <p:dataTable id="idTabela" var="user" value="#{controllerUser.users}"
                          paginator="true" rows="10" emptyMessage="Nenhum registro encontrado"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
                          {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -22,47 +22,47 @@
                     <f:facet name="header">
                         <h:outputText value="Name"/>
                     </f:facet>
-                    <h:outputText value="#{pessoa.nome}"/>
+                    <h:outputText value="#{user.name}"/>
                 </p:column>
 
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="Email"/>
                     </f:facet>
-                    <h:outputText value="#{pessoa.email}"/>
+                    <h:outputText value="#{user.email}"/>
                 </p:column>
 
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="Phone"/>
                     </f:facet>
-                    <h:outputText value="#{pessoa.telefone}"/>
+                    <h:outputText value="#{user.phone}"/>
                 </p:column>
 
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="City"/>
                     </f:facet>
-                    <h:outputText value="#{pessoa.endereco.cidade.nome}"/>
+                    <h:outputText value="#{user.endereco.cidade.nome}"/>
                 </p:column>
 
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="Actions"/>
                     </f:facet>
-                    <p:commandButton action="#{mbPessoa.editPessoa}"
+                    <p:commandButton action="#{controllerUser.editUser}"
                         value="Edit" image="ui-icon ui-icon-pencil"
                         update="@form" ajax="false">
-                        <f:setPropertyActionListener value="#{pessoa}" target="#{mbPessoa.pessoa}"/>
-                        <f:setPropertyActionListener value="#{pessoa.idPessoa}" target="#{mbPessoa.pessoa.idPessoa}"/>
-                        <f:setPropertyActionListener value="#{pessoa.endereco}" target="#{mbPessoa.endereco}"/>
-                        <f:setPropertyActionListener value="#{pessoa.endereco.estado.idEstado}" target="#{mbPessoa.endereco.estado.idEstado}"/>                        
-                        <f:setPropertyActionListener value="#{pessoa.endereco.cidade.idCidade}" target="#{mbPessoa.endereco.cidade.idCidade}"/>
-                        <f:setPropertyActionListener value="#{pessoa.endereco.tipoendereco.idTipoEndereco}" target="#{mbPessoa.endereco.tipoendereco.idTipoEndereco}"/>
-                        <f:setPropertyActionListener value="#{pessoa.endereco.tipologradouro.idTipoLogradouro}" target="#{mbPessoa.endereco.tipologradouro.idTipoLogradouro}"/>
+                        <f:setPropertyActionListener value="#{user}" target="#{controllerUser.user}"/>
+                        <f:setPropertyActionListener value="#{user.idUser}" target="#{controllerUser.user.idUser}"/>
+                        <f:setPropertyActionListener value="#{user.endereco}" target="#{controllerUser.endereco}"/>
+                        <f:setPropertyActionListener value="#{user.endereco.estado.idEstado}" target="#{controllerUser.endereco.estado.idEstado}"/>
+                        <f:setPropertyActionListener value="#{user.endereco.cidade.idCidade}" target="#{controllerUser.endereco.cidade.idCidade}"/>
+                        <f:setPropertyActionListener value="#{user.endereco.tipoendereco.idTipoEndereco}" target="#{controllerUser.endereco.tipoendereco.idTipoEndereco}"/>
+                        <f:setPropertyActionListener value="#{user.endereco.tipologradouro.idTipoLogradouro}" target="#{controllerUser.endereco.tipologradouro.idTipoLogradouro}"/>
                     </p:commandButton>
                     
-                    <p:commandButton value="Cancel" action="#{mbPessoa.limpPessoa}"
+                    <p:commandButton value="Cancel" action="#{controllerUser.limpUser}"
                                      image="ui-icon ui-icon-close" update="@form"/>
 
                 </p:column>

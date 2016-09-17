@@ -4,15 +4,13 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
     
-    <display-name>semeru_jsf_maven</display-name>
+    <display-name>web_real_estate_app</display-name>
     
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-        <!--        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.htm</welcome-file>-->
     </welcome-file-list>
     
-    <!-- Duração da sessão -->
+    <!-- Duration of session -->
 
     <session-config>
         <session-timeout>
@@ -20,7 +18,7 @@
         </session-timeout>
     </session-config>
     
-     <!-- Endereço dos arquivos de configuração do Spring -->
+     <!-- Configuration of Spring Security -->
     
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -29,13 +27,13 @@
         </param-value>
     </context-param> 
 
-    <!-- Configurações do tema do PrimeFaces -->
+    <!-- Configuration themes of PrimeFaces -->
     <context-param>  
         <param-name>primefaces.THEME</param-name>  
         <param-value>sam</param-value>  
     </context-param>         
     
-    <!-- Filtros do Spring  -->
+    <!-- Filters of Spring  -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -50,7 +48,7 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
     
-        <!-- Configurações do JavaServer Faces -->
+        <!-- Configuration of JavaServer Faces -->
     
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
@@ -77,7 +75,7 @@
         <auth-constraint/>
     </security-constraint>
     
-    <!-- Configurações do PrimeFaces -->
+    <!-- Configuration of PrimeFaces -->
     
     <servlet>
         <servlet-name>Resource Servlet</servlet-name>
@@ -88,14 +86,5 @@
         <url-pattern>/primefaces_resource/*</url-pattern>
     </servlet-mapping>
     
-    <!-- Filtros de Upload -->
-    
-<!--    <filter>  
-        <filter-name>PrimeFaces FileUpload Filter</filter-name>  
-        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>  
-    </filter>  
-    <filter-mapping>  
-        <filter-name>PrimeFaces FileUpload Filter</filter-name>  
-        <servlet-name>Faces Servlet</servlet-name>  
-    </filter-mapping> -->
+
 </web-app>

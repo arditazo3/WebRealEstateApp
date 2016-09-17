@@ -36,7 +36,7 @@ public class Endereco implements Serializable {
     @OneToOne(optional=true, fetch= FetchType.LAZY)
     @ForeignKey(name="address_user_key")
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
-    private Pessoa user;
+    private User user;
     
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_region_key")
@@ -63,7 +63,7 @@ public class Endereco implements Serializable {
         this.nation = new Estado();
         this.type_region = new TipoLogradouro();
         this.type_address = new TipoEndereco();
-        this.user = new Pessoa();
+        this.user = new User();
     }    
     
     public Integer getIdEndereco() {
@@ -114,11 +114,11 @@ public class Endereco implements Serializable {
         this.complemento = complemento;
     }
 
-    public Pessoa getPessoa() {
+    public User getPessoa() {
         return user;
     }
 
-    public void setPessoa(Pessoa user) {
+    public void setPessoa(User user) {
         this.user = user;
     }
 

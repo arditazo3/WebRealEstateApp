@@ -17,35 +17,35 @@ import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table (name="user")
-public class Pessoa implements Serializable {
+public class User implements Serializable {
     
     private static final long serialVersionUID =  1L;
     
     @Id
     @GeneratedValue
     @Column(name="id_user", nullable=false)
-    private Integer idPessoa;
+    private Integer idUser;
     @Column (name="name", nullable = false, length = 80 )
-    private String nome;
+    private String name;
     @Column (name="email", nullable = false, length = 80 )
     private String email;
     @Column (name="phone", nullable = false, length = 15 )//(034)-8888-8888
-    private String telefone;
+    private String phone;
     @Column (name="CPF", nullable = false, length = 14 )
     private String cpf;
     @Column (name="date_birth", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataDeNascimento;
+    private Date dateBirth;
     @Column (name="date_register", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataDeCadastro;
+    private Date dateRegister;
         
     @Column(name = "username", unique=true, length = 25)
-    private String login;
+    private String username;
     @Column(name = "password", length = 40)
-    private String senha;
+    private String password;
     @Column(name = "permission", length = 36)
-    private String permissao;
+    private String permission;
     
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     @ForeignKey(name="address_user_key")
@@ -56,24 +56,24 @@ public class Pessoa implements Serializable {
     @JoinColumn(name="id_gender", referencedColumnName = "id_gender")
     private Sexo gender;
 
-    public Pessoa() {
+    public User() {
         this.gender = new Sexo();
     }
 
-    public Integer getIdPessoa() {
-        return idPessoa;
+    public Integer getIdUser() {
+        return idUser;
     }
 
-    public void setIdPessoa(Integer idPessoa) {
-        this.idPessoa = idPessoa;
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -84,12 +84,12 @@ public class Pessoa implements Serializable {
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getCpf() {
@@ -100,20 +100,20 @@ public class Pessoa implements Serializable {
         this.cpf = cpf;
     }
 
-    public Date getDataDeNascimento() {
-        return dataDeNascimento;
+    public Date getDateBirth() {
+        return dateBirth;
     }
 
-    public void setDataDeNascimento(Date dataDeNascimento) {
-        this.dataDeNascimento = dataDeNascimento;
+    public void setDateBirth(Date dateBirth) {
+        this.dateBirth = dateBirth;
     }
 
-    public Date getDataDeCadastro() {
-        return dataDeCadastro;
+    public Date getDateRegister() {
+        return dateRegister;
     }
 
-    public void setDataDeCadastro(Date dataDeCadastro) {
-        this.dataDeCadastro = dataDeCadastro;
+    public void setDateRegister(Date dateRegister) {
+        this.dateRegister = dateRegister;
     }
 
     public Sexo getSexo() {
@@ -132,34 +132,34 @@ public class Pessoa implements Serializable {
         this.address = address;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getPermissao() {
-        return permissao;
+    public String getPermission() {
+        return permission;
     }
 
-    public void setPermissao(String permissao) {
-        this.permissao = permissao;
+    public void setPermission(String permission) {
+        this.permission = permission;
     }
          
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + (this.idPessoa != null ? this.idPessoa.hashCode() : 0);
+        hash = 23 * hash + (this.idUser != null ? this.idUser.hashCode() : 0);
         return hash;
     }
 
@@ -171,8 +171,8 @@ public class Pessoa implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pessoa other = (Pessoa) obj;
-        if (this.idPessoa != other.idPessoa && (this.idPessoa == null || !this.idPessoa.equals(other.idPessoa))) {
+        final User other = (User) obj;
+        if (this.idUser != other.idUser && (this.idUser == null || !this.idUser.equals(other.idUser))) {
             return false;
         }
         return true;

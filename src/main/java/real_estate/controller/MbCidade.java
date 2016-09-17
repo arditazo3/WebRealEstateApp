@@ -35,7 +35,7 @@ public class MbCidade implements Serializable {
     }
 
     public String editCidade() {
-        return "/restrict/cadastrarcidade.faces";
+        return "/restrict/list-cities.faces";
     }
 
     public String addCidade() {

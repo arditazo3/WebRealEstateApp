@@ -37,7 +37,7 @@ CREATE TABLE `cidade` (
 --
 
 /*!40000 ALTER TABLE `cidade` DISABLE KEYS */;
-INSERT INTO `cidade` (`IdCidade`,`Nome`) VALUES 
+INSERT INTO `cidade` (`IdCidade`,`Nome`) VALUES
  (1,'PATOS DE MINAS'),
  (3,'PATROCÍNIO'),
  (5,'UBERLÂNDIA'),
@@ -77,7 +77,7 @@ CREATE TABLE `endereco` (
   KEY `EnderecoPessoa` (`IdPessoa`),
   CONSTRAINT `EnderecoCidade` FOREIGN KEY (`IdCidade`) REFERENCES `cidade` (`IdCidade`),
   CONSTRAINT `EnderecoEstado` FOREIGN KEY (`IdEstado`) REFERENCES `estado` (`IdEstado`),
-  CONSTRAINT `EnderecoPessoa` FOREIGN KEY (`IdPessoa`) REFERENCES `pessoa` (`IdPessoa`),
+  CONSTRAINT `EnderecoPessoa` FOREIGN KEY (`IdPessoa`) REFERENCES `user` (`IdPessoa`),
   CONSTRAINT `EnderecoTipoEndereco` FOREIGN KEY (`IdTipoEndereco`) REFERENCES `tipoendereco` (`IdTipoEndereco`),
   CONSTRAINT `EnderecoTipoLogradouro` FOREIGN KEY (`IdTipoLogradouro`) REFERENCES `tipologradouro` (`IdTipoLogradouro`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -87,7 +87,7 @@ CREATE TABLE `endereco` (
 --
 
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
-INSERT INTO `endereco` (`IdEndereco`,`Bairro`,`CEP`,`Complemento`,`NomeLogradouro`,`Numero`,`IdCidade`,`IdEstado`,`IdPessoa`,`IdTipoEndereco`,`IdTipoLogradouro`) VALUES 
+INSERT INTO `endereco` (`IdEndereco`,`Bairro`,`CEP`,`Complemento`,`NomeLogradouro`,`Numero`,`IdCidade`,`IdEstado`,`IdPessoa`,`IdTipoEndereco`,`IdTipoLogradouro`) VALUES
  (1,'AHFGSDGFS','11111-111',0,'WERTYUI',21,1,11,1,1,1);
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 
@@ -108,7 +108,7 @@ CREATE TABLE `estado` (
 --
 
 /*!40000 ALTER TABLE `estado` DISABLE KEYS */;
-INSERT INTO `estado` (`IdEstado`,`NomeEstado`) VALUES 
+INSERT INTO `estado` (`IdEstado`,`NomeEstado`) VALUES
  (1,'ACRE'),
  (2,'ALAGOAS'),
  (3,'AMAZONAS'),
@@ -140,11 +140,11 @@ INSERT INTO `estado` (`IdEstado`,`NomeEstado`) VALUES
 
 
 --
--- Definition of table `pessoa`
+-- Definition of table `user`
 --
 
-DROP TABLE IF EXISTS `pessoa`;
-CREATE TABLE `pessoa` (
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
   `IdPessoa` int(11) NOT NULL AUTO_INCREMENT,
   `CPF` varchar(14) NOT NULL,
   `DataDeCadastro` date NOT NULL,
@@ -163,13 +163,13 @@ CREATE TABLE `pessoa` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pessoa`
+-- Dumping data for table `user`
 --
 
-/*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` (`IdPessoa`,`CPF`,`DataDeCadastro`,`DataDeNascimento`,`Email`,`Name`,`Telefone`,`IdSexo`,`Login`,`Permissao`,`Senha`) VALUES 
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`IdPessoa`,`CPF`,`DataDeCadastro`,`DataDeNascimento`,`Email`,`Name`,`Telefone`,`IdSexo`,`Login`,`Permissao`,`Senha`) VALUES
  (1,'12345667644','2013-01-12','2013-01-01','teste@live.com','ADMIN','(11) 1111-1111',1,'admin','ROLE_ADMIN','d033e22ae348aeb5660fc2140aec35850c4da997');
-/*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 
 --
@@ -189,7 +189,7 @@ CREATE TABLE `sexo` (
 --
 
 /*!40000 ALTER TABLE `sexo` DISABLE KEYS */;
-INSERT INTO `sexo` (`IdSexo`,`Descricao`) VALUES 
+INSERT INTO `sexo` (`IdSexo`,`Descricao`) VALUES
  (2,'FEMININO'),
  (1,'MASCULINO');
 /*!40000 ALTER TABLE `sexo` ENABLE KEYS */;
@@ -211,7 +211,7 @@ CREATE TABLE `tipoendereco` (
 --
 
 /*!40000 ALTER TABLE `tipoendereco` DISABLE KEYS */;
-INSERT INTO `tipoendereco` (`IdTipoEndereco`,`DescricaoTipoEndereco`) VALUES 
+INSERT INTO `tipoendereco` (`IdTipoEndereco`,`DescricaoTipoEndereco`) VALUES
  (1,'RESIDENCIAL'),
  (2,'COMERCIAL'),
  (3,'RODOVIA'),
@@ -238,7 +238,7 @@ CREATE TABLE `tipologradouro` (
 --
 
 /*!40000 ALTER TABLE `tipologradouro` DISABLE KEYS */;
-INSERT INTO `tipologradouro` (`IdTipoLogradouro`,`DescricaoTipoLogradouro`) VALUES 
+INSERT INTO `tipologradouro` (`IdTipoLogradouro`,`DescricaoTipoLogradouro`) VALUES
  (1,'RUA'),
  (2,'ALAMEDA'),
  (3,'AVENIDA'),
