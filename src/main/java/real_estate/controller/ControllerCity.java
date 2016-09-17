@@ -29,7 +29,7 @@ public class ControllerCity implements Serializable {
         return cityDAO;
     }
 
-    public String cancelCity() {
+    public String limpCity() {
         city = new City();
         return editCity();
     }
@@ -44,7 +44,7 @@ public class ControllerCity implements Serializable {
         } else {
             updateCity();
         }
-        cancelCity();
+        limpCity();
         return null;
     }
 

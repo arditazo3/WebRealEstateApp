@@ -93,7 +93,7 @@
                                              requiredMessage="Street required"/>
 
                                 <h:outputLabel for="type_address" value="Type of address.:"/>
-                                <p:selectOneMenu id="type_address" value="#{controllerUser.address.tipoendereco.idTipoEndereco}">
+                                <p:selectOneMenu id="type_address" value="#{controllerUser.address.typeAddress.idTypeAddress}">
                                     <f:selectItems value="#{manBeanTypeAddress.typeAddress}" var="typeAddress"
                                                    itemValue="#{typeAddress.idTypeAddress}" itemLabel="#{typeAddress.descrTypeAddress}"/>
                                 </p:selectOneMenu>
