@@ -32,8 +32,8 @@
         
         <!-- LISTA DE ENTIDADES -->
         <mapping class="real_estate.model.entities.City"/>
-        <mapping class="real_estate.model.entities.Endereco"/>
-        <mapping class="real_estate.model.entities.Estado"/>
+        <mapping class="real_estate.model.entities.Address"/>
+        <mapping class="real_estate.model.entities.Nation"/>
         <mapping class="real_estate.model.entities.User"/>
         <mapping class="real_estate.model.entities.Gender"/>
         <mapping class="real_estate.model.entities.TypeAddress"/>

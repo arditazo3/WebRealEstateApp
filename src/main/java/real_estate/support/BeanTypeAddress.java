@@ -10,15 +10,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.hibernate.Session;
 
-@ManagedBean(name="bbTipoEndereco")
+@ManagedBean(name="manBeanTypeAddress")
 @RequestScoped
-public class BbTipoEndereco  implements Serializable {
+public class BeanTypeAddress implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
-    public List<TypeAddress> getTipoEnderecos() {
+    public List<TypeAddress> getTypeAddress() {
         Session session = FacesContextUtil.getRequestSession();
-        InterfaceDAO<TypeAddress> tipoEnderecoDAO = new HibernateDAO<TypeAddress>(TypeAddress.class, session);
-        return tipoEnderecoDAO.getEntities();
+        InterfaceDAO<TypeAddress> typeAddressDAO = new HibernateDAO<TypeAddress>(TypeAddress.class, session);
+        return typeAddressDAO.getEntities();
     }
 }

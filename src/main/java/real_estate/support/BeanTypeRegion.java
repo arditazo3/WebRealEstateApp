@@ -10,15 +10,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.hibernate.Session;
 
-@ManagedBean(name="bbTipoLogradouro")
+@ManagedBean(name="manBeanTypeRegion")
 @RequestScoped
-public class BbTipoLogradouro  implements Serializable {
+public class BeanTypeRegion implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
-    public List<TypeRegion> getTipoLogradouros() {
+    public List<TypeRegion> getTypeRegions() {
         Session session = FacesContextUtil.getRequestSession();
-        InterfaceDAO<TypeRegion> tipoLogradouroDAO = new HibernateDAO<TypeRegion>(TypeRegion.class, session);
-        return tipoLogradouroDAO.getEntities();
+        InterfaceDAO<TypeRegion> typeRegionDAO = new HibernateDAO<TypeRegion>(TypeRegion.class, session);
+        return typeRegionDAO.getEntities();
     }
 }

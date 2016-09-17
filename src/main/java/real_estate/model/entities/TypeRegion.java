@@ -26,7 +26,7 @@ public class TypeRegion implements Serializable {
     
     @OneToMany(mappedBy = "type_region", fetch = FetchType.LAZY)
     @ForeignKey(name = "id_type_region")
-    private List<Endereco> enderecos;
+    private List<Address> addresses;
 
     public TypeRegion() {
     }
@@ -39,12 +39,12 @@ public class TypeRegion implements Serializable {
         this.descricaoTipoLogradouro = descricaoTipoLogradouro;
     }
 
-    public List<Endereco> getEnderecos() {
-        return enderecos;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public Integer getIdTipoLogradouro() {

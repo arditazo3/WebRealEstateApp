@@ -3,7 +3,7 @@ package real_estate.controller;
 import real_estate.conversores.ConverterSHA1;
 import real_estate.model.dao.HibernateDAO;
 import real_estate.model.dao.InterfaceDAO;
-import real_estate.model.entities.Endereco;
+import real_estate.model.entities.Address;
 import real_estate.model.entities.User;
 import real_estate.util.FacesContextUtil;
 
@@ -22,9 +22,9 @@ public class ControllerUser implements Serializable {
     private static final long serialVersionUID = 1L;
     private String confirmPassword;
     private User user = new User();
-    private Endereco endereco = new Endereco();
+    private Address address = new Address();
     private List<User> users;
-    private List<Endereco> enderecos;
+    private List<Address> addresses;
 
     public ControllerUser() {
     }
@@ -34,14 +34,14 @@ public class ControllerUser implements Serializable {
         return userDao;
     }
 
-    private InterfaceDAO<Endereco> enderecoDAO() {
-        InterfaceDAO<Endereco> enderecoDAO = new HibernateDAO<Endereco>(Endereco.class, FacesContextUtil.getRequestSession());
+    private InterfaceDAO<Address> enderecoDAO() {
+        InterfaceDAO<Address> enderecoDAO = new HibernateDAO<Address>(Address.class, FacesContextUtil.getRequestSession());
         return enderecoDAO;
     }
 
     public String limpUser() {
         user = new User();
-        endereco = new Endereco();
+        address = new Address();
         return editUser();
     }
 
@@ -66,8 +66,8 @@ public class ControllerUser implements Serializable {
         if (user.getPassword() == null ? confirmPassword == null : user.getPassword().equals(ConverterSHA1.cipher(confirmPassword))) {
             user.setPermission("ROLE_ADMIN");
             userDAO().save(user);
-            endereco.setPessoa(user);
-            enderecoDAO().save(endereco);
+            address.setUser(user);
+            enderecoDAO().save(address);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "User saved successful", ""));
         } else {
@@ -78,14 +78,14 @@ public class ControllerUser implements Serializable {
 
     private void updateUser() {
         userDAO().update(user);
-        enderecoDAO().update(endereco);
+        enderecoDAO().update(address);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualização efetuada com sucesso", ""));
     }
 
     public String deleteUser() {
         userDAO().remove(user);
-        enderecoDAO().remove(endereco);
+        enderecoDAO().remove(address);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro excluído com sucesso", ""));
         return null;
@@ -100,13 +100,13 @@ public class ControllerUser implements Serializable {
         this.users = users;
     }
 
-    public List<Endereco> getEnderecos() {
-        enderecos = enderecoDAO().getEntities();
-        return enderecos;
+    public List<Address> getAddresses() {
+        addresses = enderecoDAO().getEntities();
+        return addresses;
     }
 
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public User getUser() {
@@ -117,12 +117,12 @@ public class ControllerUser implements Serializable {
         this.user = user;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getConfirmPassword() {

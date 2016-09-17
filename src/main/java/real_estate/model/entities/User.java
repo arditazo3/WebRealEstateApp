@@ -49,7 +49,7 @@ public class User implements Serializable {
     
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     @ForeignKey(name="address_user_key")
-    private Endereco address;
+    private Address address;
     
     @ManyToOne(optional=false)
     @ForeignKey(name = "user_gender_key")
@@ -124,11 +124,11 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    public Endereco getEndereco() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setEndereco(Endereco address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

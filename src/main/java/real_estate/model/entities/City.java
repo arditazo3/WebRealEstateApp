@@ -26,7 +26,7 @@ public class City implements Serializable{
 
     @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     @ForeignKey(name="address_city_key")
-    private List<Endereco> enderecos;
+    private List<Address> addresses;
     
     public City() {
     }
@@ -47,12 +47,12 @@ public class City implements Serializable{
         this.name = name;
     }
 
-    public List<Endereco> getEnderecos() {
-        return enderecos;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     @Override

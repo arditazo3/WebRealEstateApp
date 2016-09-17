@@ -26,7 +26,7 @@ public class TypeAddress implements Serializable {
     
     @OneToMany(mappedBy = "type_address", fetch = FetchType.LAZY)
     @ForeignKey(name="address_type_address_key")
-    private List<Endereco> enderecos;
+    private List<Address> addresses;
 
     public TypeAddress() {
     }
@@ -39,12 +39,12 @@ public class TypeAddress implements Serializable {
         this.descricaoTipoEndereco = descricaoTipoEndereco;
     }
 
-    public List<Endereco> getEnderecos() {
-        return enderecos;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public Integer getIdTipoEndereco() {

@@ -75,46 +75,46 @@
                             <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid1">
 
                                 <h:outputLabel for="nation" value="Nation.:" />
-                                <p:selectOneMenu id="nation" value="#{controllerUser.endereco.estado.idEstado}">
-                                    <f:selectItems value="#{bbEstado.estados}" var="estado"
-                                                   itemValue="#{estado.idEstado}" itemLabel="#{estado.nomeEstado}"/>
+                                <p:selectOneMenu id="nation" value="#{controllerUser.address.nation.idNation}">
+                                    <f:selectItems value="#{manBeanNation.nations}" var="estado"
+                                                   itemValue="#{estado.idNation}" itemLabel="#{estado.nameNation}"/>
                                 </p:selectOneMenu>
 
 
                                 <h:outputLabel for="city" value="City.:" />
-                                <p:selectOneMenu id="city" value="#{controllerUser.endereco.cidade.idCity}">
+                                <p:selectOneMenu id="city" value="#{controllerUser.address.cidade.idCity}">
                                     <f:selectItems value="#{beanCity.cities}" var="city"
-                                                   itemValue="#{city.idCidade}" itemLabel="#{city.name}"/>
+                                                   itemValue="#{city.idCity}" itemLabel="#{city.name}"/>
                                 </p:selectOneMenu>
 
 
                                 <h:outputLabel for="street" value="Street.:"/>
-                                <p:inputText id="street" size="60" value="#{controllerUser.endereco.bairro}" required="true"
+                                <p:inputText id="street" size="60" value="#{controllerUser.address.street}" required="true"
                                              requiredMessage="Street required"/>
 
                                 <h:outputLabel for="type_address" value="Type of address.:"/>
-                                <p:selectOneMenu id="type_address" value="#{controllerUser.endereco.tipoendereco.idTipoEndereco}">
-                                    <f:selectItems value="#{bbTipoEndereco.tipoEnderecos}" var="tipoEndereco"
+                                <p:selectOneMenu id="type_address" value="#{controllerUser.address.tipoendereco.idTipoEndereco}">
+                                    <f:selectItems value="#{manBeanTypeAddress.tipoEnderecos}" var="tipoEndereco"
                                                    itemValue="#{tipoEndereco.idTipoEndereco}" itemLabel="#{tipoEndereco.descricaoTipoEndereco}"/>
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="type_region" value="Type of Region.:"/>
-                                <p:selectOneMenu id="type_region" value="#{controllerUser.endereco.tipologradouro.idTipoLogradouro}">
-                                    <f:selectItems value="#{bbTipoLogradouro.tipoLogradouros}" var="tipoLogradouro"
+                                <p:selectOneMenu id="type_region" value="#{controllerUser.address.tipologradouro.idTipoLogradouro}">
+                                    <f:selectItems value="#{manBeanTypeRegion.tipoLogradouros}" var="tipoLogradouro"
                                                    itemValue="#{tipoLogradouro.idTipoLogradouro}" itemLabel="#{tipoLogradouro.descricaoTipoLogradouro}"/>
                                 </p:selectOneMenu>
 
                                 <h:outputLabel for="nomelogradouro" value="Logradouro.:"/>
-                                <p:inputText id="nomelogradouro" size="75" value="#{controllerUser.endereco.nomeLogradouro}" />
+                                <p:inputText id="nomelogradouro" size="75" value="#{controllerUser.address.region}" />
 
                                 <h:outputLabel for="cep" value="CEP.:"/>
-                                <p:inputMask id="cep" size="10" value="#{controllerUser.endereco.cep}" mask="99999999" />
+                                <p:inputMask id="cep" size="10" value="#{controllerUser.address.codeStreet}" mask="99999999" />
 
                                 <h:outputLabel for="numero" value="Numero.:"/>
-                                <p:inputText id="numero" size="8" value="#{controllerUser.endereco.numero}" />
+                                <p:inputText id="numero" size="8" value="#{controllerUser.address.regionNumber}" />
 
                                 <h:outputLabel for="complemento" value="Complemento.:"/>
-                                <p:inputText id="complemento" size="20" value="#{controllerUser.endereco.complemento}"/>
+                                <p:inputText id="complemento" size="20" value="#{controllerUser.address.zip}"/>
 
                                 <p:panel>
                                     <p:commandButton value="Save" action="#{controllerUser.addUser}"

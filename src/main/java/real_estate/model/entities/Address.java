@@ -14,24 +14,24 @@ import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table(name="address")
-public class Endereco implements Serializable {
+public class Address implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue
     @Column(name="id_address", nullable=false)
-    private Integer idEndereco;
+    private Integer idAddress;
     @Column(name="street", length=80)
-    private String bairro;
+    private String street;
     @Column (name="region", length=80)
-    private String nomeLogradouro;
+    private String region;
     @Column (name="code_street", length=9)
-    private String cep;
+    private String codeStreet;
     @Column (name="region_number")
-    private Integer numero;
+    private Integer regionNumber;
     @Column (name="zip")
-    private Integer complemento;
+    private Integer zip;
     
     @OneToOne(optional=true, fetch= FetchType.LAZY)
     @ForeignKey(name="address_user_key")
@@ -46,7 +46,7 @@ public class Endereco implements Serializable {
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_nation_key")
     @JoinColumn(name = "id_nation", nullable = false)
-    private Estado nation;
+    private Nation nation;
         
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_type_address")
@@ -58,106 +58,106 @@ public class Endereco implements Serializable {
     @JoinColumn(name = "id_city", referencedColumnName="id_city")
     private City city;
 
-    public Endereco() {
+    public Address() {
         this.city = new City();
-        this.nation = new Estado();
+        this.nation = new Nation();
         this.type_region = new TypeRegion();
         this.type_address = new TypeAddress();
         this.user = new User();
     }    
     
-    public Integer getIdEndereco() {
-        return idEndereco;
+    public Integer getIdAddress() {
+        return idAddress;
     }
 
-    public void setIdEndereco(Integer idEndereco) {
-        this.idEndereco = idEndereco;
+    public void setIdAddress(Integer idEndereco) {
+        this.idAddress = idEndereco;
     }
 
-    public String getBairro() {
-        return bairro;
+    public String getStreet() {
+        return street;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public void setStreet(String bairro) {
+        this.street = bairro;
     }
 
-    public String getNomeLogradouro() {
-        return nomeLogradouro;
+    public String getRegion() {
+        return region;
     }
 
-    public void setNomeLogradouro(String nomeLogradouro) {
-        this.nomeLogradouro = nomeLogradouro;
+    public void setRegion(String nomeLogradouro) {
+        this.region = nomeLogradouro;
     }
 
-    public String getCep() {
-        return cep;
+    public String getCodeStreet() {
+        return codeStreet;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setCodeStreet(String cep) {
+        this.codeStreet = cep;
     }
 
-    public Integer getNumero() {
-        return numero;
+    public Integer getRegionNumber() {
+        return regionNumber;
     }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
+    public void setRegionNumber(Integer numero) {
+        this.regionNumber = numero;
     }
 
-    public Integer getComplemento() {
-        return complemento;
+    public Integer getZip() {
+        return zip;
     }
 
-    public void setComplemento(Integer complemento) {
-        this.complemento = complemento;
+    public void setZip(Integer complemento) {
+        this.zip = complemento;
     }
 
-    public User getPessoa() {
+    public User getUser() {
         return user;
     }
 
-    public void setPessoa(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public Estado getEstado() {
+    public Nation getNation() {
         return nation;
     }
 
-    public void setEstado(Estado nation) {
+    public void setNation(Nation nation) {
         this.nation = nation;
     }
 
-    public TypeAddress getTipoendereco() {
+    public TypeAddress getTypeAddress() {
         return type_address;
     }
 
-    public void setTipoendereco(TypeAddress type_address) {
+    public void setTypeAddress(TypeAddress type_address) {
         this.type_address = type_address;
     }
 
-    public TypeRegion getTipologradouro() {
+    public TypeRegion getTypeRegion() {
         return type_region;
     }
 
-    public void setTipologradouro(TypeRegion type_region) {
+    public void setTypeRegion(TypeRegion type_region) {
         this.type_region = type_region;
     }
 
-    public City getCidade() {
+    public City getCity() {
         return city;
     }
 
-    public void setCidade(City city) {
+    public void setCity(City city) {
         this.city = city;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 97 * hash + (this.idEndereco != null ? this.idEndereco.hashCode() : 0);
+        hash = 97 * hash + (this.idAddress != null ? this.idAddress.hashCode() : 0);
         return hash;
     }
 
@@ -169,8 +169,8 @@ public class Endereco implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Endereco other = (Endereco) obj;
-        if (this.idEndereco != other.idEndereco && (this.idEndereco == null || !this.idEndereco.equals(other.idEndereco))) {
+        final Address other = (Address) obj;
+        if (this.idAddress != other.idAddress && (this.idAddress == null || !this.idAddress.equals(other.idAddress))) {
             return false;
         }
         return true;

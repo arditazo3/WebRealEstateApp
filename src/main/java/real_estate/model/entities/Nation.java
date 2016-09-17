@@ -13,46 +13,46 @@ import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table(name="nation")
-public class Estado implements Serializable {
+public class Nation implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue
     @Column(name = "id_nation", nullable = false)
-    private Integer idEstado;
+    private Integer idNation;
     @Column(name = "name_nation", nullable = false, length = 40)
-    private String nomeEstado;
+    private String nameNation;
     
     @OneToMany(mappedBy = "nation", fetch = FetchType.LAZY)
     @ForeignKey(name="address_nation_key")
-    private List<Endereco> enderecos;
+    private List<Address> addresses;
 
-    public Estado() {
+    public Nation() {
     }
 
-    public List<Endereco> getEnderecos() {
-        return enderecos;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
-    public Integer getIdEstado() {
-        return idEstado;
+    public Integer getIdNation() {
+        return idNation;
     }
 
-    public void setIdEstado(Integer idEstado) {
-        this.idEstado = idEstado;
+    public void setIdNation(Integer idNation) {
+        this.idNation = idNation;
     }
 
-    public String getNomeEstado() {
-        return nomeEstado;
+    public String getNameNation() {
+        return nameNation;
     }
 
-    public void setNomeEstado(String nomeEstado) {
-        this.nomeEstado = nomeEstado;
+    public void setNameNation(String nameNation) {
+        this.nameNation = nameNation;
     }
 
     @Override
@@ -63,8 +63,8 @@ public class Estado implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Estado other = (Estado) obj;
-        if (this.idEstado != other.idEstado && (this.idEstado == null || !this.idEstado.equals(other.idEstado))) {
+        final Nation other = (Nation) obj;
+        if (this.idNation != other.idNation && (this.idNation == null || !this.idNation.equals(other.idNation))) {
             return false;
         }
         return true;
@@ -73,7 +73,7 @@ public class Estado implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + (this.idEstado != null ? this.idEstado.hashCode() : 0);
+        hash = 29 * hash + (this.idNation != null ? this.idNation.hashCode() : 0);
         return hash;
     }
 }

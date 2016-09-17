@@ -43,7 +43,7 @@
                     <f:facet name="header">
                         <h:outputText value="City"/>
                     </f:facet>
-                    <h:outputText value="#{user.endereco.cidade.name}"/>
+                    <h:outputText value="#{user.address.city}"/>
                 </p:column>
 
                 <p:column>
@@ -55,11 +55,11 @@
                         update="@form" ajax="false">
                         <f:setPropertyActionListener value="#{user}" target="#{controllerUser.user}"/>
                         <f:setPropertyActionListener value="#{user.idUser}" target="#{controllerUser.user.idUser}"/>
-                        <f:setPropertyActionListener value="#{user.endereco}" target="#{controllerUser.endereco}"/>
-                        <f:setPropertyActionListener value="#{user.endereco.estado.idEstado}" target="#{controllerUser.endereco.estado.idEstado}"/>
-                        <f:setPropertyActionListener value="#{user.endereco.cidade.idCidade}" target="#{controllerUser.endereco.cidade.idCidade}"/>
-                        <f:setPropertyActionListener value="#{user.endereco.tipoendereco.idTipoEndereco}" target="#{controllerUser.endereco.tipoendereco.idTipoEndereco}"/>
-                        <f:setPropertyActionListener value="#{user.endereco.tipologradouro.idTipoLogradouro}" target="#{controllerUser.endereco.tipologradouro.idTipoLogradouro}"/>
+                        <f:setPropertyActionListener value="#{user.address}" target="#{controllerUser.address}"/>
+                        <f:setPropertyActionListener value="#{user.address.nation.idNation}" target="#{controllerUser.address.nation.idNation}"/>
+                        <f:setPropertyActionListener value="#{user.address.cidade.idCidade}" target="#{controllerUser.address.cidade.idCidade}"/>
+                        <f:setPropertyActionListener value="#{user.address.tipoendereco.idTipoEndereco}" target="#{controllerUser.address.tipoendereco.idTipoEndereco}"/>
+                        <f:setPropertyActionListener value="#{user.address.tipologradouro.idTipoLogradouro}" target="#{controllerUser.address.tipologradouro.idTipoLogradouro}"/>
                     </p:commandButton>
                     
                     <p:commandButton value="Cancel" action="#{controllerUser.limpUser}"
