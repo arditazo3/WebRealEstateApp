@@ -39,11 +39,12 @@
                     <p:submenu label="Records">
                         <p:menuitem value="Cities" url="/restrict/list-cities.faces"/>
                         <p:menuitem value="Users" action="#{controllerUser.cancelUser}" ajax="false"/>
+                        <p:menuitem value="Properties" action="#{manBeanProperty.cancelProperty}" ajax="false"/>
                     </p:submenu>
 
                     <p:submenu label="Consultations">
                         <p:menuitem value="Users" url="/restrict/cities.faces"/>
-                    </p:submenu>                                      
+                    </p:submenu>
                 </p:menubar> 
             </h:form>           
         </div>

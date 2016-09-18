@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>UNYT - Web Real Estate</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="#{facesContext.externalContext.requestContextPath}/resources/restrict/css/myStyle.css" rel="stylesheet" type="text/css" />
+    <link href="#{facesContext.externalContext.requestContextPath}/resources/restrict/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</h:head>
+
+<h:body>
+
+    <div id="top">
+        <a href="/public/home.faces"><div id="logotop"></div></a>
+        <div id="logoff">
+        </div>
+    </div>
+
+    <div id="menu"><!-- Menu -->
+        <h:form>
+            <p:menubar styleClass="labelmenu">
+
+                <p:submenu label="Properties">
+                    <p:menuitem value="Properties" url="/restrict/list-properties.faces"/>
+                </p:submenu>
+
+            </p:menubar>
+        </h:form>
+    </div>
+
+    <!-- Menu-->
+    <div id="tasks">
+
+        <ui:insert name="tasks"></ui:insert>
+
+    </div>
+
+    <div id="footer">
+        <a href="/public/home.faces"><img src="#{facesContext.externalContext.requestContextPath}/resources/restrict/images/logo_mini.png" /></a>
+
+        <div id="copyright">
+            <a href="/public/home.faces">Web Real Estate App - &copy; Copyright 2016</a>
+        </div>
+    </div>
+
+</h:body>
+
+</html>
