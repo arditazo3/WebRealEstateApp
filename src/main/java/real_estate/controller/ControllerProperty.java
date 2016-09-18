@@ -35,7 +35,7 @@ public class ControllerProperty implements Serializable {
     }
 
     public String editProperty() {
-        return "/public/list-properties.faces";
+        return "/restrict/list-properties.faces";
     }
 
     public String addProperty() {
