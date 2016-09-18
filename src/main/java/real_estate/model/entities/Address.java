@@ -41,18 +41,18 @@ public class Address implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_region_key")
     @JoinColumn(name = "id_type_region", referencedColumnName = "id_type_region")
-    private TypeRegion type_region;
-    
+    private TypeRegion typeRegion;
+
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_nation_key")
     @JoinColumn(name = "id_nation", nullable = false)
     private Nation nation;
-        
+
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_type_address")
     @JoinColumn(name = "id_type_address", referencedColumnName="id_type_address")
     private TypeAddress type_address;
-    
+
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_city_key")
     @JoinColumn(name = "id_city", referencedColumnName="id_city")
@@ -61,11 +61,11 @@ public class Address implements Serializable {
     public Address() {
         this.city = new City();
         this.nation = new Nation();
-        this.type_region = new TypeRegion();
+        this.typeRegion = new TypeRegion();
         this.type_address = new TypeAddress();
         this.user = new User();
-    }    
-    
+    }
+
     public Integer getIdAddress() {
         return idAddress;
     }
@@ -139,11 +139,11 @@ public class Address implements Serializable {
     }
 
     public TypeRegion getTypeRegion() {
-        return type_region;
+        return typeRegion;
     }
 
     public void setTypeRegion(TypeRegion type_region) {
-        this.type_region = type_region;
+        this.typeRegion = type_region;
     }
 
     public City getCity() {

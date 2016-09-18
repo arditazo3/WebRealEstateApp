@@ -31,6 +31,11 @@
                                     <f:selectItems value="#{beanGender.genders}" var="gender" itemValue="#{gender.idGender}" itemLabel="#{gender.description}"/>
                                 </p:selectOneMenu>
 
+                                <h:outputLabel for="typeUser" value="Type of User.:"/>
+                                <p:selectOneMenu id="typeUser" value="#{controllerUser.user.typeUser.idTypeUser}">
+                                    <f:selectItems value="#{beanTypeUser.typeUsers}" var="typeUser" itemValue="#{typeUser.idTypeUser}" itemLabel="#{typeUser.descrTypeUser}"/>
+                                </p:selectOneMenu>
+
                                 <h:outputLabel for="phone" value="Phone.:"/>
                                 <p:inputMask id="phone" size="40" mask="999 99 99 999"
                                              value="#{controllerUser.user.phone}"/>
@@ -83,8 +88,8 @@
 
                                 <h:outputLabel for="city" value="City.:" />
                                 <p:selectOneMenu id="city" value="#{controllerUser.address.city.idCity}">
-                                    <f:selectItems value="#{beanCity.cities}" var="city"
-                                                   itemValue="#{city.idCity}" itemLabel="#{city.name}"/>
+                                    <f:selectItems value="#{beanCity.cities}" var="property"
+                                                   itemValue="#{property.idCity}" itemLabel="#{property.name}"/>
                                 </p:selectOneMenu>
 
 

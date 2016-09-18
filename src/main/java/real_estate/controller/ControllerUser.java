@@ -69,7 +69,7 @@ public class ControllerUser implements Serializable {
             address.setUser(user);
             addressDAO().save(address);
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "User saved successful", ""));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "User saved successfully", ""));
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Password no match", ""));

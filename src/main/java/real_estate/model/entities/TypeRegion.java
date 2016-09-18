@@ -24,9 +24,13 @@ public class TypeRegion implements Serializable {
     @Column(name = "descr_type_region", nullable = false, length = 40)
     private String descrTypeRegion;
     
-    @OneToMany(mappedBy = "type_region", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "typeRegion", fetch = FetchType.LAZY)
     @ForeignKey(name = "id_type_region")
     private List<Address> addresses;
+
+    @OneToMany(mappedBy = "typeRegion", fetch = FetchType.LAZY)
+    @ForeignKey(name = "id_type_region")
+    private List<Property> properties;
 
     public TypeRegion() {
     }
@@ -76,4 +80,6 @@ public class TypeRegion implements Serializable {
         hash = 53 * hash + (this.idTypeRegion != null ? this.idTypeRegion.hashCode() : 0);
         return hash;
     }
+
+
 }

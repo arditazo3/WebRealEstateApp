@@ -56,8 +56,14 @@ public class User implements Serializable {
     @JoinColumn(name="id_gender", referencedColumnName = "id_gender")
     private Gender gender;
 
+    @ManyToOne(optional=false)
+    @ForeignKey(name = "user_type_user_key")
+    @JoinColumn(name="id_type_user", referencedColumnName = "id_type_user")
+    private TypeUser typeUser;
+
     public User() {
         this.gender = new Gender();
+        this.typeUser = new TypeUser();
     }
 
     public Integer getIdUser() {
@@ -177,5 +183,12 @@ public class User implements Serializable {
         }
         return true;
     }
-             
+
+    public TypeUser getTypeUser() {
+        return typeUser;
+    }
+
+    public void setTypeUser(TypeUser typeUser) {
+        this.typeUser = typeUser;
+    }
 }

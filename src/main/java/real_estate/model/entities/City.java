@@ -27,7 +27,11 @@ public class City implements Serializable{
     @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     @ForeignKey(name="address_city_key")
     private List<Address> addresses;
-    
+
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+    @ForeignKey(name="property_city_key")
+    private List<Property> properties;
+
     public City() {
     }
 
@@ -76,5 +80,12 @@ public class City implements Serializable{
         }
         return true;
     }
-    
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
+    }
 }

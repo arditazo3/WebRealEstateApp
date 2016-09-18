@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"                
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -9,69 +9,69 @@
                 template="./../resources/main.xhtml">
 
     <ui:define name="tasks">
-        <p:fieldset legend="Cities">
+        <p:fieldset legend="Properties">
             <br/>
             <p:tabView id="tbv1" dynamic="true" cache="true">
-                <p:tab title="City">
+                <p:tab title="Properties">
                     <h:form prependId="false" id="formCity">
                         <p:growl id="msg0"/>
                         <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
-                            
+
                             <h:outputLabel/>
-                            <h:inputHidden id="idCity" value="#{manBeanCity.city.idCity}"/>
-                            
-                            <h:outputLabel for="nameCity" value="Name.:"/>
-                            <p:inputText id="nameCity" size="40" value="#{manBeanCity.city.name}"
-                                         required="true" requiredMessage="Name required."/>
-                            
+                            <h:inputHidden id="idProperty" value="#{manBeanProperty.property.idProperty}"/>
+
+                            <h:outputLabel for="descrProperty" value="Name.:"/>
+                            <p:inputText id="descrProperty" size="40" value="#{manBeanProperty.property.descrProperty}"
+                                         required="true" requiredMessage="Description required."/>
+
                             <p:panel>
-                                <p:commandButton value="Save" action="#{manBeanCity.addCity}"
-                                    image="ui-icon ui-icon-disk" update="@form :formtable"/>
-                                <p:commandButton value="Cancel" actionListener="#{manBeanCity.cancelCity}"
-                                    image="ui-icon ui-icon-close" update="@form"/>
+                                <p:commandButton value="Save" action="#{manBeanProperty.addProperty}"
+                                                 image="ui-icon ui-icon-disk" update="@form :formtable"/>
+                                <p:commandButton value="Cancel" actionListener="#{manBeanProperty.cancelProperty}"
+                                                 image="ui-icon ui-icon-close" update="@form"/>
                             </p:panel>
                         </h:panelGrid>
                     </h:form>
                 </p:tab>
             </p:tabView>
-            
+
             <h:form id="formtable">
                 <p:growl id="msg1"/>
-                <p:dataTable id="idTable" var="property" value="#{manBeanCity.cities}"
-                             paginator="true" rows="10" emptyMessage="None city registerd"
+                <p:dataTable id="idTable" var="property" value="#{manBeanProperty.properties}"
+                             paginator="true" rows="10" emptyMessage="None property registerd"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
                              {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
-                
+
                     <f:facet name="header">List of Cities</f:facet>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Name"/>
+                            <h:outputText value="Description"/>
                         </f:facet>
-                        <h:outputText value="#{property.name}"/>
+                        <h:outputText value="#{property.descrProperty}"/>
                     </p:column>
-                    
+
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Actions"/>
                         </f:facet>
                         <p:commandButton value="Edit" image="ui-icon ui-icon-pencil"
-                                process="@this" update=":tbv1:formCity">
-                            <f:setPropertyActionListener target="#{manBeanCity.city}"
-                                value="#{property}"/>
+                                         process="@this" update=":tbv1:formCity">
+                            <f:setPropertyActionListener target="#{manBeanCitymanBeanProperty.properties}"
+                                                         value="#{property}"/>
                         </p:commandButton>
-                        <p:commandButton value="Remove" action="#{manBeanCity.deleteCity}"
-                                image="ui-icon ui-icon-close" update="@form">
-                            <f:setPropertyActionListener target="#{manBeanCity.city}"
-                                value="#{property}"/>
+                        <p:commandButton value="Remove" action="#{manBeanProperty.deleteProperty}"
+                                         image="ui-icon ui-icon-close" update="@form">
+                            <f:setPropertyActionListener target="#{manBeanProperty.properties}"
+                                                         value="#{property}"/>
                         </p:commandButton>
-                        
+
                     </p:column>
-                    
+
                 </p:dataTable>
-                
+
             </h:form>
-            
+
         </p:fieldset>
     </ui:define>
 

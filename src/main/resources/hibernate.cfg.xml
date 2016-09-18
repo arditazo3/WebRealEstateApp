@@ -29,5 +29,7 @@
         <mapping class="real_estate.model.entities.Gender"/>
         <mapping class="real_estate.model.entities.TypeAddress"/>
         <mapping class="real_estate.model.entities.TypeRegion"/>
+        <mapping class="real_estate.model.entities.TypeUser"/>
+        <mapping class="real_estate.model.entities.Property"/>
     </session-factory>
 </hibernate-configuration>

@@ -26,7 +26,7 @@ public class Gender implements Serializable {
 
     @OneToMany(mappedBy = "gender", fetch = FetchType.LAZY)
     @ForeignKey(name = "user_gender_key")
-    private List<User> pessoas;
+    private List<User> users;
     
     public Gender() {
     }
@@ -48,11 +48,11 @@ public class Gender implements Serializable {
     }
 
     public List<User> getUsers() {
-        return pessoas;
+        return users;
     }
 
-    public void setPessoas(List<User> pessoas) {
-        this.pessoas = pessoas;
+    public void setUsers(List<User> pessoas) {
+        this.users = pessoas;
     }
     
     @Override

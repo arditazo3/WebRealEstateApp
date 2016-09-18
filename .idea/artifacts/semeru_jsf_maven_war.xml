@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="semeru_jsf_maven:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="semeru_jsf_maven-1.0-SNAPSHOT.war">
+    <root id="archive" name="web_real_estate_app-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="semeru_jsf_maven:war exploded" />
     </root>
   </artifact>
