@@ -13,8 +13,8 @@
             <br/>
             <p:tabView id="tbv1" dynamic="true" cache="true">
                 <p:tab title="Properties">
-                    <h:form prependId="false" id="formCity">
-                        <p:growl id="msg0"/>
+                    <h:form prependId="false" id="formProperty">
+                        <p:growl id="msg000"/>
                         <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
 
                             <h:outputLabel/>
@@ -56,7 +56,7 @@
                             <h:outputText value="Actions"/>
                         </f:facet>
                         <p:commandButton value="Edit" image="ui-icon ui-icon-pencil"
-                                         process="@this" update=":tbv1:formCity">
+                                         process="@this" update=":tbv1:formProperty">
                             <f:setPropertyActionListener target="#{manBeanCitymanBeanProperty.properties}"
                                                          value="#{property}"/>
                         </p:commandButton>

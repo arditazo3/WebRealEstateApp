@@ -1,14 +1,19 @@
 package real_estate.controller;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import real_estate.model.dao.HibernateDAO;
 import real_estate.model.dao.InterfaceDAO;
+import real_estate.model.entities.City;
 import real_estate.model.entities.Property;
+import real_estate.model.entities.User;
 import real_estate.util.FacesContextUtil;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +25,8 @@ public class ControllerProperty implements Serializable {
 
     private Property property = new Property();
     private List<Property> properties = new ArrayList<Property>();
+
+    private Integer idCityProp = null;
 
     public ControllerProperty() {
     }
@@ -71,12 +78,53 @@ public class ControllerProperty implements Serializable {
         return null;
     }
 
+    public void searchUpdateProperty() {
+
+        List<Property> listProperties = getSearchProperty();
+    }
+
+    public List<Property> getSearchProperty() {
+
+        if( property.getDescrProperty() != null && !property.getDescrProperty().equals("") ) {
+
+            String queryString = " select p from Property p        " +
+                    " where p.descrProperty like :descrProperty or " +
+                    " p.typeProperty like :typeProperty            ";
+            Session session = FacesContextUtil.getRequestSession();
+            Query query = session.createQuery(queryString)
+                    .setParameter("descrProperty", "%" + property.getDescrProperty() + "%" )
+                    .setParameter("typeProperty", "%" + property.getDescrProperty() + "%" );
+            return query.list();
+
+        } else if(this.getIdCityProp() != null) {
+
+            String queryString = " select p from Property p      " +
+                                 " where p.city.idCity = :idCity ";
+            Session session = FacesContextUtil.getRequestSession();
+            Query query = session.createQuery(queryString)
+                    .setParameter("idCity",  this.getIdCityProp() );
+            return query.list();
+
+        } else {
+
+            return getProperties();
+        }
+    }
+
+    public void handleChange(){
+        List<Property> listProperties = getSearchProperty();
+    }
+
     public List<Property> getProperties() {
         properties = propertyDAO().getEntities();
         return properties;
     }
 
     public Property getProperty() {
+
+        City city = new City();
+        property.setCity(city);
+
         return property;
     }
 
@@ -86,5 +134,13 @@ public class ControllerProperty implements Serializable {
 
     public void setProperties(List<Property> properties) {
         this.properties = properties;
+    }
+
+    public Integer getIdCityProp() {
+        return idCityProp;
+    }
+
+    public void setIdCityProp(Integer idCityProp) {
+        this.idCityProp = idCityProp;
     }
 }

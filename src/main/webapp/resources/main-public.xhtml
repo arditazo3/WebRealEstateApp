@@ -17,8 +17,19 @@
 <h:body>
 
     <div id="top">
-        <a href="/public/home.faces"><div id="logotop"></div></a>
+        <a href="#"><div id="logotop"></div></a>
+
         <div id="logoff">
+            <h:form>
+                <br/>
+                <!--<a href="./../login.faces">-->
+                    <!--<h4>Log In</h4>-->
+                <!--</a>-->
+
+                <p:button value="Log In" href="./../login.faces"/>
+                <p:button value="Register" href="./../public/list-users.faces"/>
+
+            </h:form>
         </div>
     </div>
 
@@ -26,9 +37,7 @@
         <h:form>
             <p:menubar styleClass="labelmenu">
 
-                <p:submenu label="Properties">
-                    <p:menuitem value="Properties" url="/restrict/list-properties.faces"/>
-                </p:submenu>
+                <p:menuitem value="Properties" url="/public/list-properties.faces"/>
 
             </p:menubar>
         </h:form>

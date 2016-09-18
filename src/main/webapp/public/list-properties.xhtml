@@ -9,41 +9,64 @@
                 template="./../resources/main-public.xhtml">
 
     <ui:define name="tasks">
-        <p:fieldset legend="Properties">
+        <p:fieldset legend="List of Properties">
             <br/>
             <p:tabView id="tbv1" dynamic="true" cache="true">
-                <p:tab title="Properties">
-                    <h:form prependId="false" id="formCity">
-                        <p:growl id="msg0"/>
-                        <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
-
-                            <h:outputLabel/>
-                            <h:inputHidden id="idProperty" value="#{manBeanProperty.property.idProperty}"/>
-
-                            <h:outputLabel for="descrProperty" value="Name.:"/>
-                            <p:inputText id="descrProperty" size="40" value="#{manBeanProperty.property.descrProperty}"
-                                         required="true" requiredMessage="Description required."/>
+                <p:tab title="Search of Properties">
+                    <h:form prependId="false" id="formProperties">
+                        <p:growl id="msgsearchProperty"/>
+                        <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="gridSearchProp">
 
                             <p:panel>
-                                <p:commandButton value="Save" action="#{manBeanProperty.addProperty}"
-                                                 image="ui-icon ui-icon-disk" update="@form :formtable"/>
-                                <p:commandButton value="Cancel" actionListener="#{manBeanProperty.cancelProperty}"
-                                                 image="ui-icon ui-icon-close" update="@form"/>
+
+                                <h:outputLabel for="searchProperty" value="Search a property by Description or Type.:"/>
+                                <p:inputText id="searchProperty" size="40" value="#{manBeanProperty.property.descrProperty}" />
+                                <p:spacer width="15px" />
+                                <p:commandButton value="Search" action="#{manBeanProperty.searchUpdateProperty}"
+                                                 image="ui-icon ui-icon-search" update="@form :formtable"/>
+
                             </p:panel>
                         </h:panelGrid>
                     </h:form>
                 </p:tab>
+
+                <p:tab title="Search of Properties with Criteria">
+                    <h:form prependId="false" id="formCity">
+                        <p:growl id="msgCriteria"/>
+                        <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="gridPropCriteria">
+
+                            <p:panel>
+
+                                <p:selectOneMenu id="city" value="#{manBeanProperty.idCityProp}"
+                                                 onchange="submit()" valueChangeListener="#{manBeanProperty.handleChange}">
+
+                                    <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+
+                                    <f:selectItems value="#{manBeanCity.cities}" var="city" itemValue="#{city.idCity}" itemLabel="#{city.name}" />
+                                </p:selectOneMenu>
+
+                                <h:outputLabel  value="Search a property with criteria.:"/>
+                                <p:spacer width="15px" />
+                                <p:commandButton value="Search" action="#{manBeanProperty.handleChange}"
+                                                 image="ui-icon ui-icon-search" update="@form :formtable"/>
+
+                            </p:panel>
+                        </h:panelGrid>
+                    </h:form>
+                </p:tab>
+
             </p:tabView>
 
             <h:form id="formtable">
                 <p:growl id="msg1"/>
-                <p:dataTable id="idTable" var="property" value="#{manBeanProperty.properties}"
+                <p:dataTable id="idTable" var="property" value="#{manBeanProperty.searchProperty}"
                              paginator="true" rows="10" emptyMessage="None property registerd"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
                              {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
 
-                    <f:facet name="header">List of Cities</f:facet>
+                    <f:facet name="header">List of Properties</f:facet>
+
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Description"/>
@@ -53,20 +76,35 @@
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Actions"/>
+                            <h:outputText value="Address"/>
                         </f:facet>
-                        <p:commandButton value="Edit" image="ui-icon ui-icon-pencil"
-                                         process="@this" update=":tbv1:formCity">
-                            <f:setPropertyActionListener target="#{manBeanCitymanBeanProperty.properties}"
-                                                         value="#{property}"/>
-                        </p:commandButton>
-                        <p:commandButton value="Remove" action="#{manBeanProperty.deleteProperty}"
-                                         image="ui-icon ui-icon-close" update="@form">
-                            <f:setPropertyActionListener target="#{manBeanProperty.properties}"
-                                                         value="#{property}"/>
-                        </p:commandButton>
-
+                        <h:outputText value="#{property.address}"/>
                     </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name of City"/>
+                        </f:facet>
+                        <h:outputText value="#{property.city.name}"/>
+                    </p:column>
+
+
+                    <!--<p:column>-->
+                        <!--<f:facet name="header">-->
+                            <!--<h:outputText value="Actions"/>-->
+                        <!--</f:facet>-->
+                        <!--<p:commandButton value="Edit" image="ui-icon ui-icon-pencil"-->
+                                         <!--process="@this" update=":tbv1:formCity">-->
+                            <!--<f:setPropertyActionListener target="#{manBeanCitymanBeanProperty.properties}"-->
+                                                         <!--value="#{property}"/>-->
+                        <!--</p:commandButton>-->
+                        <!--<p:commandButton value="Remove" action="#{manBeanProperty.deleteProperty}"-->
+                                         <!--image="ui-icon ui-icon-close" update="@form">-->
+                            <!--<f:setPropertyActionListener target="#{manBeanProperty.properties}"-->
+                                                         <!--value="#{property}"/>-->
+                        <!--</p:commandButton>-->
+
+                    <!--</p:column>-->
 
                 </p:dataTable>
 
