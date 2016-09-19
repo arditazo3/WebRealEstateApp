@@ -46,12 +46,6 @@
                                     <f:validator validatorId="emailValidator"/>
                                 </p:inputText>
 
-                                <h:outputLabel for="cpf" value="CPF.:"/>
-                                <p:inputText id="cpf" size="40" value="#{controllerUser.user.cpf}"
-                                             required="true" requiredMessage="CPF required">
-                                    <!--<f:validator validatorId="cpfValidator"/>-->
-                                </p:inputText>
-
                                 <h:outputLabel for="date_birth" value="Date of Birth.:"/>
                                 <p:calendar id="date_birth" value="#{controllerUser.user.dateBirth}"
                                             required="true" requiredMessage="Date of Birth required"

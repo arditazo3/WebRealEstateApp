@@ -59,6 +59,7 @@ public class ControllerUser implements Serializable {
         }
 
         user = new User();
+        address = new Address();
         return null;
     }
 

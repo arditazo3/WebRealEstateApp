@@ -24,8 +24,6 @@ public class User implements Serializable {
     private String email;
     @Column (name="phone", nullable = false, length = 15 )//(034)-8888-8888
     private String phone;
-    @Column (name="CPF", nullable = false, length = 14 )
-    private String cpf;
     @Column (name="date_birth", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateBirth;
@@ -93,14 +91,6 @@ public class User implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public Date getDateBirth() {

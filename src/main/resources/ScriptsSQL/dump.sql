@@ -158,7 +158,6 @@ INSERT INTO type_region (id_type_region,descr_type_region) VALUES
 DROP TABLE IF EXISTS user;
 CREATE TABLE user (
   id_user int(11) NOT NULL AUTO_INCREMENT,
-  CPF varchar(14) NOT NULL,
   date_register date NOT NULL,
   date_birth date NOT NULL,
   email varchar(80) NOT NULL,
@@ -181,8 +180,8 @@ CREATE TABLE user (
 -- Dumping data for table user
 --
 
-INSERT INTO user (id_user,CPF,date_register,date_birth,email,name,phone,id_gender,username,permission,password, id_type_user) VALUES
- (1,'12345667644','2013-01-12','2013-01-01','teste@live.com','ADMIN','(11) 1111-1111',1,'admin','ROLE_ADMIN','d033e22ae348aeb5660fc2140aec35850c4da997', 1);
+INSERT INTO user (id_user,date_register,date_birth,email,name,phone,id_gender,username,permission,password, id_type_user) VALUES
+ (1,'2013-01-12','2013-01-01','teste@live.com','ADMIN','(11) 1111-1111',1,'admin','ROLE_ADMIN','d033e22ae348aeb5660fc2140aec35850c4da997', 1);
 
 --
 -- Definition of table property

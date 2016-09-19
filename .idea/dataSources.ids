@@ -269,75 +269,71 @@
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="71" parent="10" name="CPF">
-        <mandatory>1</mandatory>
-        <data-type>varchar(14)</data-type>
-      </column>
-      <column id="72" parent="10" name="date_register">
+      <column id="71" parent="10" name="date_register">
         <mandatory>1</mandatory>
         <data-type>date</data-type>
       </column>
-      <column id="73" parent="10" name="date_birth">
+      <column id="72" parent="10" name="date_birth">
         <mandatory>1</mandatory>
         <data-type>date</data-type>
       </column>
-      <column id="74" parent="10" name="email">
+      <column id="73" parent="10" name="email">
         <mandatory>1</mandatory>
         <data-type>varchar(80)</data-type>
       </column>
-      <column id="75" parent="10" name="name">
+      <column id="74" parent="10" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(80)</data-type>
       </column>
-      <column id="76" parent="10" name="phone">
+      <column id="75" parent="10" name="phone">
         <mandatory>1</mandatory>
         <data-type>varchar(15)</data-type>
       </column>
-      <column id="77" parent="10" name="id_gender">
+      <column id="76" parent="10" name="id_gender">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="78" parent="10" name="username">
+      <column id="77" parent="10" name="username">
         <data-type>varchar(25)</data-type>
       </column>
-      <column id="79" parent="10" name="permission">
+      <column id="78" parent="10" name="permission">
         <data-type>varchar(36)</data-type>
       </column>
-      <column id="80" parent="10" name="password">
+      <column id="79" parent="10" name="password">
         <data-type>varchar(40)</data-type>
       </column>
-      <column id="81" parent="10" name="id_type_user">
+      <column id="80" parent="10" name="id_type_user">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <index id="82" parent="10" name="username">
+      <index id="81" parent="10" name="username">
         <columns>username</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <index id="83" parent="10" name="user_gender_key">
+      <index id="82" parent="10" name="user_gender_key">
         <columns>id_gender</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="84" parent="10" name="user_type_user_key">
+      <index id="83" parent="10" name="user_type_user_key">
         <columns>id_type_user</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="85" parent="10" name="PRIMARY">
+      <key id="84" parent="10" name="PRIMARY">
         <columns>id_user</columns>
         <primary>1</primary>
       </key>
-      <key id="86" parent="10" name="username">
+      <key id="85" parent="10" name="username">
         <columns>username</columns>
         <underlying-index>username</underlying-index>
       </key>
-      <foreign-key id="87" parent="10" name="user_gender_key">
+      <foreign-key id="86" parent="10" name="user_gender_key">
         <columns>id_gender</columns>
         <ref-key>~.gender.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="88" parent="10" name="user_type_user_key">
+      <foreign-key id="87" parent="10" name="user_type_user_key">
         <columns>id_type_user</columns>
         <ref-key>~.type_user.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
