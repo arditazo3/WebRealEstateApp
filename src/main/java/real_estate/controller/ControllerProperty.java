@@ -88,7 +88,7 @@ public class ControllerProperty implements Serializable {
 
             updateProperty();
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Property not saved successfully", ""));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Property updated successfully", ""));
         }
 
         return null;

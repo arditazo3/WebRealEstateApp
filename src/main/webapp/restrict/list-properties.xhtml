@@ -48,9 +48,6 @@
                                                itemValue="#{typeAddress.idTypeAddress}"  itemLabel="#{typeAddress.descrTypeAddress}" />
                             </p:selectOneMenu>
 
-                            <!--<h:outputLabel/>-->
-                            <!--<h:inputHidden id="idUser" value="#{manBeanProperty.idUser}"/>-->
-
                             <p:panel>
                                 <p:commandButton value="Save" action="#{manBeanProperty.addProperty}"
                                                  image="ui-icon ui-icon-disk" update="@form :formtable"/>
@@ -99,11 +96,12 @@
                         </f:facet>
                         <p:commandButton action="#{manBeanProperty.editProperty}" value="Edit" image="ui-icon ui-icon-pencil"
                                          update="@form" ajax="false" >
-                            <f:setPropertyActionListener  value="#{property}"               target="#{manBeanProperty.property}" />
-                            <f:setPropertyActionListener  value="#{property.descrProperty}" target="#{manBeanProperty.property.typeProperty}" />
-                            <f:setPropertyActionListener  value="#{property.typeProperty}"       target="#{manBeanProperty.property.address}" />
-                            <f:setPropertyActionListener  value="#{property.address}"       target="#{manBeanProperty.property.address}" />
-                            <f:setPropertyActionListener  value="#{property.city == null ? null : property.city.idCity}"     target="#{manBeanProperty.property.city == null ? null : manBeanProperty.property.city.idCity }" />
+                            <f:setPropertyActionListener  value="#{property}"                          target="#{manBeanProperty.property}" />
+                            <f:setPropertyActionListener  value="#{property.descrProperty}"            target="#{manBeanProperty.property.typeProperty}" />
+                            <f:setPropertyActionListener  value="#{property.typeProperty}"             target="#{manBeanProperty.property.address}" />
+                            <f:setPropertyActionListener  value="#{property.address}"                  target="#{manBeanProperty.property.address}" />
+                            <f:setPropertyActionListener  value="#{property.city.idCity }"             target="#{manBeanProperty.property.city.idCity }" />
+                            <f:setPropertyActionListener  value="#{property.typeRegion.idTypeRegion }" target="#{manBeanProperty.property.typeRegion.idTypeRegion }" />
                         </p:commandButton>
 
                         <p:commandButton value="Remove" action="#{manBeanProperty.deleteProperty}"
