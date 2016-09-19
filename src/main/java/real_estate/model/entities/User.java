@@ -2,16 +2,9 @@ package real_estate.model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
+import java.util.List;
+import javax.persistence.*;
+
 import org.hibernate.annotations.ForeignKey;
 
 
@@ -60,6 +53,10 @@ public class User implements Serializable {
     @ForeignKey(name = "user_type_user_key")
     @JoinColumn(name="id_type_user", referencedColumnName = "id_type_user")
     private TypeUser typeUser;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @ForeignKey(name = "id_user")
+    private List<Property> properties;
 
     public User() {
         this.gender = new Gender();

@@ -58,6 +58,7 @@ public class ControllerUser implements Serializable {
             updateUser();
         }
 
+        user = new User();
         return null;
     }
 

@@ -16,7 +16,6 @@ CREATE TABLE nation (
 -- Dumping data for table nation
 --
 
-/*!40000 ALTER TABLE nation DISABLE KEYS */;
 INSERT INTO nation (id_nation,name_nation) VALUES
   (1,'Albania'),
   (2,'Turkey'),
@@ -33,7 +32,6 @@ INSERT INTO nation (id_nation,name_nation) VALUES
   (13,'Marocoo'),
   (14,'Peru'),
   (15,'Argentina');
-/*!40000 ALTER TABLE nation ENABLE KEYS */;
 
 
 --
@@ -51,7 +49,6 @@ CREATE TABLE city (
 -- Dumping data for table id_city
 --
 
-/*!40000 ALTER TABLE city DISABLE KEYS */;
 INSERT INTO city (id_city,name) VALUES
  (1,'Tirana'),
  (3,'Elbasan'),
@@ -64,7 +61,6 @@ INSERT INTO city (id_city,name) VALUES
  (24,'Kukes'),
  (25,'Puke'),
  (26,'Fier');
-/*!40000 ALTER TABLE city ENABLE KEYS */;
 
 --
 -- Definition of table gender
@@ -82,11 +78,9 @@ CREATE TABLE gender (
 -- Dumping data for table gender
 --
 
-/*!40000 ALTER TABLE gender DISABLE KEYS */;
 INSERT INTO gender (id_gender,description) VALUES
   (2,'Female'),
   (1,'Male');
-/*!40000 ALTER TABLE gender ENABLE KEYS */;
 
 --
 -- Definition of table type_user
@@ -100,12 +94,10 @@ CREATE TABLE type_user (
   UNIQUE KEY description (description)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
-/*!40000 ALTER TABLE type_user DISABLE KEYS */;
 INSERT INTO type_user (id_type_user,description) VALUES
   (3,'Agency Staff'),
   (2,'Buyer'),
   (1,'Seller');
-/*!40000 ALTER TABLE type_user ENABLE KEYS */;
 
 
 --
@@ -123,7 +115,6 @@ CREATE TABLE type_address (
 -- Dumping data for table type_address
 --
 
-/*!40000 ALTER TABLE type_address DISABLE KEYS */;
 INSERT INTO type_address (id_type_address,descr_type_address) VALUES
   (1,'Residential'),
   (2,'Commercial'),
@@ -132,7 +123,6 @@ INSERT INTO type_address (id_type_address,descr_type_address) VALUES
   (5,'Industry'),
   (6,'CHÁCARA'),
   (7,'Vila');
-/*!40000 ALTER TABLE type_address ENABLE KEYS */;
 
 
 --
@@ -150,7 +140,6 @@ CREATE TABLE type_region (
 -- Dumping data for table type_region
 --
 
-/*!40000 ALTER TABLE type_region DISABLE KEYS */;
 INSERT INTO type_region (id_type_region,descr_type_region) VALUES
   (1,'RUA'),
   (2,'ALAMEDA'),
@@ -159,30 +148,8 @@ INSERT INTO type_region (id_type_region,descr_type_region) VALUES
   (5,'BECO'),
   (6,'TRAVESSA'),
   (7,'PRAÇA');
-/*!40000 ALTER TABLE type_region ENABLE KEYS */;
 
---
--- Definition of table property
---
 
-DROP TABLE IF EXISTS property;
-CREATE TABLE property (
-  id_property int(11) NOT NULL AUTO_INCREMENT,
-  descr_property varchar(255) NOT NULL,
-  type_property varchar(255) NOT NULL,
-  date_register date NOT NULL,
-  address varchar(80) NOT NULL,
-  id_city int(11) NOT NULL,
-  id_type_region int(11) NOT NULL,
-  PRIMARY KEY (id_property),
-  KEY property_city_key (id_city),
-  KEY property_region_key (id_type_region),
-  CONSTRAINT property_region_key FOREIGN KEY (id_type_region) REFERENCES type_region (id_type_region),
-  CONSTRAINT property_city_key FOREIGN KEY (id_city) REFERENCES city (id_city)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
-
-INSERT INTO property(descr_property, type_property, date_register, address, id_city, id_type_region) VALUES
-('Apartment', 'Apartment', now(), 'Groove Str', 1, 1);
 
 --
 -- Definition of table user
@@ -214,10 +181,34 @@ CREATE TABLE user (
 -- Dumping data for table user
 --
 
-/*!40000 ALTER TABLE user DISABLE KEYS */;
 INSERT INTO user (id_user,CPF,date_register,date_birth,email,name,phone,id_gender,username,permission,password, id_type_user) VALUES
  (1,'12345667644','2013-01-12','2013-01-01','teste@live.com','ADMIN','(11) 1111-1111',1,'admin','ROLE_ADMIN','d033e22ae348aeb5660fc2140aec35850c4da997', 1);
-/*!40000 ALTER TABLE user ENABLE KEYS */;
+
+--
+-- Definition of table property
+--
+
+DROP TABLE IF EXISTS property;
+CREATE TABLE property (
+  id_property int(11) NOT NULL AUTO_INCREMENT,
+  descr_property varchar(255) NOT NULL,
+  type_property varchar(255) NOT NULL,
+  date_register date NOT NULL,
+  address varchar(80) NOT NULL,
+  id_city int(11) NOT NULL,
+  id_type_region int(11) NOT NULL,
+  id_user int(11) NOT NULL,
+  PRIMARY KEY (id_property),
+  KEY property_city_key (id_city),
+  KEY property_region_key (id_type_region),
+  KEY property_user_key (id_user),
+  CONSTRAINT property_region_key FOREIGN KEY (id_type_region) REFERENCES type_region (id_type_region),
+  CONSTRAINT property_city_key FOREIGN KEY (id_city) REFERENCES city (id_city),
+    CONSTRAINT property_user_key FOREIGN KEY (id_user) REFERENCES user (id_user)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+INSERT INTO property(descr_property, type_property, date_register, address, id_city, id_type_region, id_user) VALUES
+  ('Apartment', 'Apartment', now(), 'Groove Str', 1, 1, 1);
 
 --
 -- Definition of table address
@@ -253,7 +244,5 @@ CREATE TABLE address (
 -- Dumping data for table address
 --
 
-/*!40000 ALTER TABLE address DISABLE KEYS */;
 INSERT INTO address (id_address,street,code_street,zip,region,region_number,id_city,id_nation,id_user,id_type_address,id_type_region) VALUES
   (1,'AHFGSDGFS','11111-111',0,'WERTYUI',21,1,11,1,1,1);
-/*!40000 ALTER TABLE address ENABLE KEYS */;

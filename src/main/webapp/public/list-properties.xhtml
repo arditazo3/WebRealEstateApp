@@ -46,10 +46,45 @@
                                     <f:selectItems value="#{manBeanCity.cities}" var="city" itemValue="#{city.idCity}" itemLabel="#{city.name}" />
                                 </p:selectOneMenu>
 
-                                <h:outputLabel  value="Search a property with criteria.:"/>
+                                <h:outputLabel  value="Search a property by City.:"/>
                                 <p:spacer width="15px" />
 
                             </p:panel>
+
+                            <p:panel>
+
+                                <p:selectOneMenu id="city" value="#{manBeanProperty.idRegion}">
+
+                                    <p:ajax listener="#{manBeanProperty.handleChange}" update=":formtable:idTable" />
+
+                                    <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+
+                                    <f:selectItems value="#{manBeanTypeRegion.typeRegions}" var="region"
+                                                   itemValue="#{region.idTypeRegion}" itemLabel="#{region.descrTypeRegion}" />
+                                </p:selectOneMenu>
+
+                                <h:outputLabel  value="Search a property by Region.:"/>
+                                <p:spacer width="15px" />
+
+                            </p:panel>
+
+                            <p:panel>
+
+                                <p:selectOneMenu id="city" value="#{manBeanProperty.idUser}">
+
+                                    <p:ajax listener="#{manBeanProperty.handleChange}" update=":formtable:idTable" />
+
+                                    <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+
+                                    <f:selectItems value="#{controllerUser.users}" var="user"
+                                                   itemValue="#{user.idUser}" itemLabel="#{user.name}" />
+                                </p:selectOneMenu>
+
+                                <h:outputLabel  value="Search a property by User.:"/>
+                                <p:spacer width="15px" />
+
+                            </p:panel>
+
                         </h:panelGrid>
                     </h:form>
                 </p:tab>
@@ -86,24 +121,6 @@
                         </f:facet>
                         <h:outputText value="#{property.city.name}"/>
                     </p:column>
-
-
-                    <!--<p:column>-->
-                        <!--<f:facet name="header">-->
-                            <!--<h:outputText value="Actions"/>-->
-                        <!--</f:facet>-->
-                        <!--<p:commandButton value="Edit" image="ui-icon ui-icon-pencil"-->
-                                         <!--process="@this" update=":tbv1:formCity">-->
-                            <!--<f:setPropertyActionListener target="#{manBeanCitymanBeanProperty.properties}"-->
-                                                         <!--value="#{property}"/>-->
-                        <!--</p:commandButton>-->
-                        <!--<p:commandButton value="Remove" action="#{manBeanProperty.deleteProperty}"-->
-                                         <!--image="ui-icon ui-icon-close" update="@form">-->
-                            <!--<f:setPropertyActionListener target="#{manBeanProperty.properties}"-->
-                                                         <!--value="#{property}"/>-->
-                        <!--</p:commandButton>-->
-
-                    <!--</p:column>-->
 
                 </p:dataTable>
 

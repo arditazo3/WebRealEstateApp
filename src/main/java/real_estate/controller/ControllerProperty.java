@@ -27,9 +27,9 @@ public class ControllerProperty implements Serializable {
     private List<Property> properties = new ArrayList<Property>();
 
     private Integer idCityProp = null;
+    private Integer idRegion = null;
 
-    public ControllerProperty() {
-    }
+
 
     private InterfaceDAO<Property> propertyDAO() {
         InterfaceDAO<Property> propertyDao = new HibernateDAO<Property>(Property.class, FacesContextUtil.getRequestSession());
@@ -105,6 +105,24 @@ public class ControllerProperty implements Serializable {
                     .setParameter("idCity",  this.getIdCityProp() );
             return query.list();
 
+        } else if(this.getIdRegion() != null) {
+
+            String queryString = " select p from Property p      " +
+                    " where p.typeRegion.idTypeRegion = :idTypeRegion ";
+            Session session = FacesContextUtil.getRequestSession();
+            Query query = session.createQuery(queryString)
+                    .setParameter("idTypeRegion",  this.getIdRegion() );
+            return query.list();
+
+        } else if(this.getIdUser() != null) {
+
+            String queryString = " select p from Property p      " +
+                    " where p.user.idUser = :idUser ";
+            Session session = FacesContextUtil.getRequestSession();
+            Query query = session.createQuery(queryString)
+                    .setParameter("idUser",  this.getIdUser() );
+            return query.list();
+
         } else {
 
             return getProperties();
@@ -142,5 +160,26 @@ public class ControllerProperty implements Serializable {
 
     public void setIdCityProp(Integer idCityProp) {
         this.idCityProp = idCityProp;
+    }
+
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
+
+    public Integer getIdRegion() {
+        return idRegion;
+    }
+
+    public void setIdRegion(Integer idRegion) {
+        this.idRegion = idRegion;
+    }
+
+    private Integer idUser = null;
+
+    public ControllerProperty() {
     }
 }

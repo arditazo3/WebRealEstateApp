@@ -38,6 +38,11 @@ public class Property implements Serializable {
     @JoinColumn(name = "id_type_region", referencedColumnName = "id_type_region")
     private TypeRegion typeRegion;
 
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ForeignKey(name="property_user_key")
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
+    private User user;
+
     public Property() {
     }
 
