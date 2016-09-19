@@ -13,7 +13,7 @@ body {
 
 #top{
    width: 100%;
-   height:220px;
+   height:200px;
    margin:0;
    padding:0;
    background-image: url(../images/top.jpg);
@@ -241,7 +241,7 @@ label {
 
 #top {
 	width:100%;
-	height:170px;
+	height:130px;
 }
 
 caption{

@@ -37,8 +37,9 @@
 
                             <p:panel>
 
-                                <p:selectOneMenu id="city" value="#{manBeanProperty.idCityProp}"
-                                                 onchange="submit()" valueChangeListener="#{manBeanProperty.handleChange}">
+                                <p:selectOneMenu id="city" value="#{manBeanProperty.idCityProp}">
+
+                                    <p:ajax listener="#{manBeanProperty.handleChange}" update=":formtable:idTable" />
 
                                     <f:selectItem itemValue="#{null}" itemLabel="--select--" />
 
@@ -47,8 +48,6 @@
 
                                 <h:outputLabel  value="Search a property with criteria.:"/>
                                 <p:spacer width="15px" />
-                                <p:commandButton value="Search" action="#{manBeanProperty.handleChange}"
-                                                 image="ui-icon ui-icon-search" update="@form :formtable"/>
 
                             </p:panel>
                         </h:panelGrid>
