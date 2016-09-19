@@ -20,9 +20,36 @@
                             <h:outputLabel/>
                             <h:inputHidden id="idProperty" value="#{manBeanProperty.property.idProperty}"/>
 
-                            <h:outputLabel for="descrProperty" value="Name.:"/>
+                            <h:outputLabel for="descrProperty" value="Description.:"/>
                             <p:inputText id="descrProperty" size="40" value="#{manBeanProperty.property.descrProperty}"
-                                         required="true" requiredMessage="Description required."/>
+                                         required="true" requiredMessage="Required."/>
+
+                            <h:outputLabel for="address" value="Address.:"/>
+                            <p:inputText id="address" size="40" value="#{manBeanProperty.property.address}"
+                                         required="true" requiredMessage="Required."/>
+
+                            <h:outputLabel for="city" value="Name of City.:"/>
+                            <p:selectOneMenu id="city" value="#{  manBeanProperty.property.city.idCity}">
+
+                                <f:selectItems value="#{manBeanCity.cities}" var="city" itemValue="#{city.idCity}" itemLabel="#{city.name}" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel for="region" value="Region.:"/>
+                            <p:selectOneMenu id="region" value="#{  manBeanProperty.property.typeRegion.idTypeRegion}">
+
+                                <f:selectItems value="#{manBeanTypeRegion.typeRegions}" var="region"
+                                               itemValue="#{region.idTypeRegion}"  itemLabel="#{region.descrTypeRegion}" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel for="typeProperty" value="Type of Property.:"/>
+                            <p:selectOneMenu id="typeProperty" value="#{ manBeanProperty.property.typeProperty}">
+
+                                <f:selectItems value="#{manBeanTypeAddress.typeAddress}" var="typeAddress"
+                                               itemValue="#{typeAddress.idTypeAddress}"  itemLabel="#{typeAddress.descrTypeAddress}" />
+                            </p:selectOneMenu>
+
+                            <!--<h:outputLabel/>-->
+                            <!--<h:inputHidden id="idUser" value="#{manBeanProperty.idUser}"/>-->
 
                             <p:panel>
                                 <p:commandButton value="Save" action="#{manBeanProperty.addProperty}"
@@ -43,7 +70,8 @@
                              {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
 
-                    <f:facet name="header">List of Cities</f:facet>
+                    <f:facet name="header">List of Properties</f:facet>
+
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Description"/>
@@ -53,16 +81,34 @@
 
                     <p:column>
                         <f:facet name="header">
+                            <h:outputText value="Address"/>
+                        </f:facet>
+                        <h:outputText value="#{property.address}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name of City"/>
+                        </f:facet>
+                        <h:outputText value="#{property.city.name}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
                             <h:outputText value="Actions"/>
                         </f:facet>
-                        <p:commandButton value="Edit" image="ui-icon ui-icon-pencil"
-                                         process="@this" update=":tbv1:formProperty">
-                            <f:setPropertyActionListener target="#{manBeanCitymanBeanProperty.properties}"
-                                                         value="#{property}"/>
+                        <p:commandButton action="#{manBeanProperty.editProperty}" value="Edit" image="ui-icon ui-icon-pencil"
+                                         update="@form" ajax="false" >
+                            <f:setPropertyActionListener  value="#{property}"               target="#{manBeanProperty.property}" />
+                            <f:setPropertyActionListener  value="#{property.descrProperty}" target="#{manBeanProperty.property.typeProperty}" />
+                            <f:setPropertyActionListener  value="#{property.typeProperty}"       target="#{manBeanProperty.property.address}" />
+                            <f:setPropertyActionListener  value="#{property.address}"       target="#{manBeanProperty.property.address}" />
+                            <f:setPropertyActionListener  value="#{property.city == null ? null : property.city.idCity}"     target="#{manBeanProperty.property.city == null ? null : manBeanProperty.property.city.idCity }" />
                         </p:commandButton>
+
                         <p:commandButton value="Remove" action="#{manBeanProperty.deleteProperty}"
                                          image="ui-icon ui-icon-close" update="@form">
-                            <f:setPropertyActionListener target="#{manBeanProperty.properties}"
+                            <f:setPropertyActionListener target="#{manBeanProperty.property}"
                                                          value="#{property}"/>
                         </p:commandButton>
 

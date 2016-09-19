@@ -44,6 +44,8 @@ public class Property implements Serializable {
     private User user;
 
     public Property() {
+        this.typeRegion = new TypeRegion();
+        this.user = new User();
     }
 
     public Integer getIdProperty() {
@@ -87,6 +89,10 @@ public class Property implements Serializable {
     }
 
     public City getCity() {
+
+        if(city == null)
+            city = new City();
+
         return city;
     }
 
@@ -145,5 +151,13 @@ public class Property implements Serializable {
                 ", city=" + city +
                 ", typeRegion=" + typeRegion +
                 '}';
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -2,11 +2,11 @@ package real_estate.controller;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.cache.spi.Region;
+import real_estate.beans.BeanUserLogged;
 import real_estate.model.dao.HibernateDAO;
 import real_estate.model.dao.InterfaceDAO;
-import real_estate.model.entities.City;
-import real_estate.model.entities.Property;
-import real_estate.model.entities.User;
+import real_estate.model.entities.*;
 import real_estate.util.FacesContextUtil;
 
 import javax.faces.application.FacesMessage;
@@ -28,12 +28,31 @@ public class ControllerProperty implements Serializable {
 
     private Integer idCityProp = null;
     private Integer idRegion = null;
-
-
+    private City city = new City();
 
     private InterfaceDAO<Property> propertyDAO() {
         InterfaceDAO<Property> propertyDao = new HibernateDAO<Property>(Property.class, FacesContextUtil.getRequestSession());
         return propertyDao;
+    }
+
+    private InterfaceDAO<User> userDAO() {
+        InterfaceDAO<User> userDAOcityDAOMethod = new HibernateDAO<User>(User.class, FacesContextUtil.getRequestSession());
+        return userDAOcityDAOMethod;
+    }
+
+    private InterfaceDAO<City> cityDAO() {
+        InterfaceDAO<City> cityDAOMethod = new HibernateDAO<City>(City.class, FacesContextUtil.getRequestSession());
+        return cityDAOMethod;
+    }
+
+    private InterfaceDAO<TypeRegion> typeRegionDAO() {
+        InterfaceDAO<TypeRegion> propertyRegionDaocityDAOMethod = new HibernateDAO<TypeRegion>(TypeRegion.class, FacesContextUtil.getRequestSession());
+        return propertyRegionDaocityDAOMethod;
+    }
+
+    private InterfaceDAO<TypeAddress> typeAddressDAO() {
+        InterfaceDAO<TypeAddress> typeAddressDAOcityDAOMethod = new HibernateDAO<TypeAddress>(TypeAddress.class, FacesContextUtil.getRequestSession());
+        return typeAddressDAOcityDAOMethod;
     }
 
     public String cancelProperty() {
@@ -49,7 +68,19 @@ public class ControllerProperty implements Serializable {
         Date dateNow = new Date();
         if(property.getIdProperty() == null) {
 
+            BeanUserLogged beanUser = new BeanUserLogged();
+
+            User user = userDAO().getEntity( beanUser.getUserLogged().getIdUser() );
+
+            TypeRegion typeRegion = typeRegionDAO().getEntity( property.getTypeRegion().getIdTypeRegion() );
+
+            City city = cityDAO().getEntity( property.getCity().getIdCity() );
+
+            property.setUser(user);
+            property.setCity(city);
+            property.setTypeRegion(typeRegion);
             property.setDateRegister(dateNow);
+
             propertyDAO().save(property);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Property saved successfully", ""));
@@ -140,9 +171,6 @@ public class ControllerProperty implements Serializable {
 
     public Property getProperty() {
 
-        City city = new City();
-        property.setCity(city);
-
         return property;
     }
 
@@ -181,5 +209,13 @@ public class ControllerProperty implements Serializable {
     private Integer idUser = null;
 
     public ControllerProperty() {
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 }
