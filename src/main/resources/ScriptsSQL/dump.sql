@@ -202,11 +202,36 @@ CREATE TABLE property (
   KEY property_user_key (id_user),
   CONSTRAINT property_region_key FOREIGN KEY (id_type_region) REFERENCES type_region (id_type_region),
   CONSTRAINT property_city_key FOREIGN KEY (id_city) REFERENCES city (id_city),
-    CONSTRAINT property_user_key FOREIGN KEY (id_user) REFERENCES user (id_user)
+  CONSTRAINT property_user_key FOREIGN KEY (id_user) REFERENCES user (id_user)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 INSERT INTO property(descr_property, type_property, date_register, address, surface_area, id_city, id_type_region, id_user) VALUES
   ('Apartment', 'Apartment', now(), 'Groove Str', '250 m square', 1, 1, 1);
+
+--
+-- Definition of table sales
+--
+
+DROP TABLE IF EXISTS sales;
+CREATE TABLE sales (
+  id_sale int(11) NOT NULL AUTO_INCREMENT,
+  descr_sale varchar(255) NOT NULL,
+  prize int(11) NOT NULL,
+  date_sale date NOT NULL,
+  id_property int(11) NOT NULL,
+  id_user int(11) NOT NULL,
+  PRIMARY KEY (id_sale),
+  KEY sale_property_key (id_property),
+  KEY sale_user_key (id_user),
+  UNIQUE KEY id_property (id_property),
+  CONSTRAINT sale_property_key FOREIGN KEY (id_property) REFERENCES property (id_property),
+  CONSTRAINT sale_user_key FOREIGN KEY (id_user) REFERENCES user (id_user)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+# INSERT INTO sales(descr_sale, prize, date_sale, id_property, id_user) VALUES
+# ('Sold for a good prize', 15000, now(), 8, 1);
+#
+# SELECT * FROM sales;
 
 --
 -- Definition of table address

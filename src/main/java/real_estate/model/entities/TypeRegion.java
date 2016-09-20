@@ -2,13 +2,8 @@ package real_estate.model.entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import org.hibernate.annotations.ForeignKey;
 
 @Entity
@@ -18,7 +13,7 @@ public class TypeRegion implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id_type_region", nullable = false)
     private Integer idTypeRegion;
     @Column(name = "descr_type_region", nullable = false, length = 40)

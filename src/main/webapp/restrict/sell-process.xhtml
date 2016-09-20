@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../resources/main.xhtml">
+
+    <ui:define name="tasks">
+        <p:fieldset legend="Properties">
+            <br/>
+            <p:tabView id="tbv1" dynamic="true" cache="true">
+                <p:tab title="Properties">
+                    <h:form prependId="false" id="formSale">
+                        <p:growl id="msg000"/>
+                        <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
+
+                            <h:outputLabel/>
+                            <h:inputHidden id="idSale" value="#{manBeanSale.sale.idSale}"/>
+
+                            <h:outputLabel for="descrSale" value="Description.:"/>
+                            <p:inputText id="descrSale" size="40" value="#{manBeanSale.sale.descrSale}"
+                                         required="true" requiredMessage="Required."/>
+
+                            <h:outputLabel for="prize" value="Prize.:"/>
+                            <p:inputText id="prize" size="40" value="#{manBeanSale.sale.prize}"
+                                         required="true" requiredMessage="Required."/>
+
+                            <h:outputLabel for="dateSale" value="Date of sale.:"/>
+                            <p:calendar id="dateSale" size="40" value="#{manBeanSale.sale.dateSale}"
+                                        required="true" requiredMessage="Date of Sale required"
+                                        locale="pt_EN" navigator="true" effect="explode" pattern="dd/MM/yyyy"/>
+
+
+                            <h:outputLabel for="property" value="Choose the property.:"/>
+                            <p:selectOneMenu id="property" value="#{  manBeanSale.sale.property.idProperty }">
+
+                                <f:selectItems value="#{manBeanProperty.properties}" var="property"
+                                               itemValue="#{property.idProperty}" itemLabel="#{property.descrProperty}" />
+                            </p:selectOneMenu>
+
+                            <h:outputLabel for="user" value="Choose the user.:"/>
+                            <p:selectOneMenu id="user" value="#{ manBeanSale.sale.user.idUser }">
+
+                                <f:selectItems value="#{controllerUser.users}" var="user"
+                                               itemValue="#{user.idUser}"  itemLabel="#{user.name}" />
+                            </p:selectOneMenu>
+
+                            <p:panel>
+                                <p:commandButton value="Save" action="#{manBeanSale.insertSale}"
+                                                 image="ui-icon ui-icon-disk" update="@form"/>
+                                <p:commandButton value="Cancel" actionListener="#{manBeanSale.editSale}"
+                                                 image="ui-icon ui-icon-close" update="@form"/>
+                            </p:panel>
+                        </h:panelGrid>
+                    </h:form>
+                </p:tab>
+            </p:tabView>
+
+        </p:fieldset>
+    </ui:define>
+
+</ui:composition>

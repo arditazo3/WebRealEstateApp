@@ -10,8 +10,10 @@ import java.util.Date;
 @Table(name="property")
 public class Property implements Serializable {
 
+    private static final long serialVersionUID =  1L;
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id_property", nullable=false)
     private Integer idProperty;
 
@@ -45,6 +47,10 @@ public class Property implements Serializable {
     @ForeignKey(name="property_user_key")
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     private User user;
+
+    @OneToOne(optional=true, fetch= FetchType.LAZY)
+    @ForeignKey(name="sale_property_key")
+    private Sale sale;
 
     public Property() {
         this.typeRegion = new TypeRegion();
@@ -170,5 +176,13 @@ public class Property implements Serializable {
 
     public void setSurfaceArea(String surfaceArea) {
         this.surfaceArea = surfaceArea;
+    }
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
     }
 }

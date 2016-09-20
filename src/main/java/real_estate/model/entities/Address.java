@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
+import javax.persistence.*;
 
 @Entity
 @Table(name="address")
@@ -19,7 +20,7 @@ public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id_address", nullable=false)
     private Integer idAddress;
     @Column(name="street", length=80)
@@ -175,5 +176,12 @@ public class Address implements Serializable {
         }
         return true;
     }
-        
+
+    public TypeAddress getType_address() {
+        return type_address;
+    }
+
+    public void setType_address(TypeAddress type_address) {
+        this.type_address = type_address;
+    }
 }

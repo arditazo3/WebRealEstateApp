@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
+import javax.persistence.*;
 
 @Entity
 @Table(name="city")
@@ -18,7 +19,7 @@ public class City implements Serializable{
     private static final long serialVersionUID =  1L; 
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id_city", nullable=false)
     private Integer idCity;
     @Column(name="name", length=80, nullable=false)

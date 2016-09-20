@@ -31,5 +31,6 @@
         <mapping class="real_estate.model.entities.TypeRegion"/>
         <mapping class="real_estate.model.entities.TypeUser"/>
         <mapping class="real_estate.model.entities.Property"/>
+        <mapping class="real_estate.model.entities.Sale"/>
     </session-factory>
 </hibernate-configuration>

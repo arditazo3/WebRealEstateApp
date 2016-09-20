@@ -15,7 +15,7 @@ public class User implements Serializable {
     private static final long serialVersionUID =  1L;
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id_user", nullable=false)
     private Integer idUser;
     @Column (name="name", nullable = false, length = 80 )
@@ -55,6 +55,10 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     @ForeignKey(name = "id_user")
     private List<Property> properties;
+
+    @OneToOne(optional=true, fetch= FetchType.LAZY)
+    @ForeignKey(name="sale_user_key")
+    private Sale sale;
 
     public User() {
         this.gender = new Gender();
@@ -178,4 +182,22 @@ public class User implements Serializable {
     public void setTypeUser(TypeUser typeUser) {
         this.typeUser = typeUser;
     }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
+    }
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
+    }
+
+
 }

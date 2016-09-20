@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
+import javax.persistence.*;
 
 @Entity
 @Table(name="nation")
@@ -18,7 +19,7 @@ public class Nation implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id_nation", nullable = false)
     private Integer idNation;
     @Column(name = "name_nation", nullable = false, length = 40)

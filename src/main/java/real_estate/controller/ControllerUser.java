@@ -39,14 +39,24 @@ public class ControllerUser implements Serializable {
         return addressDAO;
     }
 
-    public String cancelUser() {
-        user = new User();
-        address = new Address();
+    public String cancelUser(User user) {
+
+        if(user != null) {
+
+            addressDAO().remove( addressDAO().getEntity(user.getAddress().getIdAddress()) );
+
+            userDAO().remove(user);
+
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "User deleted successfully", ""));
+
+            return "/restrict/list-users.faces";
+        }
         return editUser();
     }
 
     public String editUser() {
-        return "/restrict/list-users.faces";
+        return "/restrict/create-user.faces";
     }
 
     public String addUser() {

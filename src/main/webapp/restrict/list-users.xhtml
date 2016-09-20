@@ -9,124 +9,66 @@
                 template="./../resources/main.xhtml">
 
     <ui:define name="tasks">
-        <p:fieldset legend="Informations">
+        <h:form>
+            <p:growl id="msg0"/>
+            <p:dataTable id="idTable" var="user" value="#{controllerUser.users}"
+                         paginator="true" rows="10" emptyMessage="Nenhum registro encontrado"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
+                         {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
 
-            <br/>
-            <h:form>
-                <p:wizard nextLabel="Next Step" backLabel="Previous Step">
-                    <p:tab title="Basic information" id="infoUser">
-                        <p:panel header="Basic information about the user">
-                            <p:growl id="msg0"/>
-                            <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
+                <f:facet name="header">List of Users</f:facet>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Name"/>
+                    </f:facet>
+                    <h:outputText value="#{user.name}"/>
+                </p:column>
 
-                                <h:outputLabel/>
-                                <h:inputHidden id="id_user" value="#{controllerUser.user.idUser}"/>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Email"/>
+                    </f:facet>
+                    <h:outputText value="#{user.email}"/>
+                </p:column>
 
-                                <h:outputLabel for="name_user" value="Name.:"/>
-                                <p:inputText id="name_user" size="40" value="#{controllerUser.user.name}"
-                                             required="true" requiredMessage="Name required"/>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Phone"/>
+                    </f:facet>
+                    <h:outputText value="#{user.phone}"/>
+                </p:column>
 
-                                <h:outputLabel for="gender" value="Gender.:"/>
-                                <p:selectOneMenu id="gender" value="#{controllerUser.user.gender.idGender}">
-                                    <f:selectItems value="#{beanGender.genders}" var="gender" itemValue="#{gender.idGender}" itemLabel="#{gender.description}"/>
-                                </p:selectOneMenu>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="City"/>
+                    </f:facet>
+                    <h:outputText value="#{user.address.city.name}"/>
+                </p:column>
 
-                                <h:outputLabel for="typeUser" value="Type of User.:"/>
-                                <p:selectOneMenu id="typeUser" value="#{controllerUser.user.typeUser.idTypeUser}">
-                                    <f:selectItems value="#{beanTypeUser.typeUsers}" var="typeUser" itemValue="#{typeUser.idTypeUser}" itemLabel="#{typeUser.descrTypeUser}"/>
-                                </p:selectOneMenu>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Actions"/>
+                    </f:facet>
+                    <p:commandButton action="#{controllerUser.editUser}"
+                        value="Edit" image="ui-icon ui-icon-pencil"
+                        update="@form" ajax="false">
+                        <f:setPropertyActionListener value="#{user}" target="#{controllerUser.user}"/>
+                        <f:setPropertyActionListener value="#{user.idUser}" target="#{controllerUser.user.idUser}"/>
+                        <f:setPropertyActionListener value="#{user.address}" target="#{controllerUser.address}"/>
+                        <f:setPropertyActionListener value="#{user.address.nation.idNation}" target="#{controllerUser.address.nation.idNation}"/>
+                        <f:setPropertyActionListener value="#{user.address.city.idCity}" target="#{controllerUser.address.city.idCity}"/>
+                        <f:setPropertyActionListener value="#{user.address.typeAddress.idTypeAddress}" target="#{controllerUser.address.typeAddress.idTypeAddress}"/>
+                        <f:setPropertyActionListener value="#{user.address.typeRegion.idTypeRegion}" target="#{controllerUser.address.typeRegion.idTypeRegion}"/>
+                    </p:commandButton>
+                    
+                    <p:commandButton value="Cancel" action="#{controllerUser.cancelUser(user)}"
+                                     image="ui-icon ui-icon-close" update="@form"/>
 
-                                <h:outputLabel for="phone" value="Phone.:"/>
-                                <p:inputMask id="phone" size="40" mask="999 99 99 999"
-                                             value="#{controllerUser.user.phone}"/>
+                </p:column>
 
-                                <h:outputLabel for="email" value="E-mail.:"/>
-                                <p:inputText id="email" size="40" value="#{controllerUser.user.email}"
-                                             required="true" requiredMessage="E-mail required">
-                                    <f:validator validatorId="emailValidator"/>
-                                </p:inputText>
-
-                                <h:outputLabel for="date_birth" value="Date of Birth.:"/>
-                                <p:calendar id="date_birth" value="#{controllerUser.user.dateBirth}"
-                                            required="true" requiredMessage="Date of Birth required"
-                                            locale="pt_EN" navigator="true" effect="explode" pattern="dd/MM/yyyy"/>
-
-                                <h:outputLabel for="username" value="Username.:"/>
-                                <p:inputText id="username" value="#{controllerUser.user.username}" size="30"/>
-
-                                <h:outputLabel for="passwpord" value="Password.:" />
-                                <p:password id="passwpord" size="30" maxlength="22" promptLabel="Type of Password" value="#{controllerUser.confirmPassword}"
-                                            weakLabel="Weak Password" goodLabel="Good Password" strongLabel="Strong Password" feedback="true"/>
-
-                                <h:outputLabel for="password2" value="Confirm Password.:"/>
-                                <p:password id="password2" size="30" value="#{controllerUser.user.password}" maxlength="22"
-                                            promptLabel="Confirm the password" weakLabel="Weak Password" validator="passwordValidator"
-                                            goodLabel="Good Password" strongLabel="Stong Password" feedback="true">
-                                </p:password>  
-
-                            </h:panelGrid>
-                        </p:panel>
-                    </p:tab>
-
-                    <p:tab title="Information of Address" id="infoAddress">
-                        <p:panel header="Information of Address">
-                            <p:growl id="msg1"/>
-                            <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid1">
-
-                                <h:outputLabel for="nation" value="Nation.:" />
-                                <p:selectOneMenu id="nation" value="#{controllerUser.address.nation.idNation}">
-                                    <f:selectItems value="#{manBeanNation.nations}" var="estado"
-                                                   itemValue="#{estado.idNation}" itemLabel="#{estado.nameNation}"/>
-                                </p:selectOneMenu>
-
-
-                                <h:outputLabel for="city" value="City.:" />
-                                <p:selectOneMenu id="city" value="#{controllerUser.address.city.idCity}">
-                                    <f:selectItems value="#{beanCity.cities}" var="property"
-                                                   itemValue="#{property.idCity}" itemLabel="#{property.name}"/>
-                                </p:selectOneMenu>
-
-
-                                <h:outputLabel for="street" value="Street.:"/>
-                                <p:inputText id="street" size="60" value="#{controllerUser.address.street}" required="true"
-                                             requiredMessage="Street required"/>
-
-                                <h:outputLabel for="type_address" value="Type of address.:"/>
-                                <p:selectOneMenu id="type_address" value="#{controllerUser.address.typeAddress.idTypeAddress}">
-                                    <f:selectItems value="#{manBeanTypeAddress.typeAddress}" var="typeAddress"
-                                                   itemValue="#{typeAddress.idTypeAddress}" itemLabel="#{typeAddress.descrTypeAddress}"/>
-                                </p:selectOneMenu>
-
-                                <h:outputLabel for="type_region" value="Type of Region.:"/>
-                                <p:selectOneMenu id="type_region" value="#{controllerUser.address.typeRegion.idTypeRegion}">
-                                    <f:selectItems value="#{manBeanTypeRegion.typeRegions}" var="typeRegions"
-                                                   itemValue="#{typeRegions.idTypeRegion}" itemLabel="#{typeRegions.descrTypeRegion}"/>
-                                </p:selectOneMenu>
-
-                                <h:outputLabel for="nameRegion" value="Region.:"/>
-                                <p:inputText id="nameRegion" size="75" value="#{controllerUser.address.region}" />
-
-                                <h:outputLabel for="codeStreet" value="Code Street:"/>
-                                <p:inputMask id="codeStreet" size="10" value="#{controllerUser.address.codeStreet}" mask="99999999" />
-
-                                <h:outputLabel for="regionNumber" value="Region Number.:"/>
-                                <p:inputText id="regionNumber" size="8" value="#{controllerUser.address.regionNumber}" />
-
-                                <h:outputLabel for="zip" value="ZIP.:"/>
-                                <p:inputText id="zip" size="20" value="#{controllerUser.address.zip}"/>
-
-                                <p:panel>
-                                    <p:commandButton value="Save" action="#{controllerUser.addUser}"
-                                                     image="ui-icon ui-icon-disk" update="@form"/>
-                                    <p:commandButton value="Cancel" actionListener="#{controllerUser.cancelUser}"
-                                                     image="ui-icon ui-icon-close" update="@form"/>
-                                </p:panel>
-                            </h:panelGrid>
-                        </p:panel>
-                    </p:tab>
-                </p:wizard>
-            </h:form>
-        </p:fieldset>
+            </p:dataTable>
+        </h:form>
     </ui:define>
 
 </ui:composition>

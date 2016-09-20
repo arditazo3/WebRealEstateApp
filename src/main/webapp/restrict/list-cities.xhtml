@@ -16,25 +16,28 @@
                     <h:form prependId="false" id="formCity">
                         <p:growl id="msg0"/>
                         <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
-                            
-                            <h:outputLabel/>
-                            <h:inputHidden id="idCity" value="#{manBeanCity.city.idCity}"/>
-                            
-                            <h:outputLabel for="nameCity" value="Name.:"/>
-                            <p:inputText id="nameCity" size="40" value="#{manBeanCity.city.name}"
-                                         required="true" requiredMessage="Name required."/>
-                            
+
                             <p:panel>
+
+                                <h:outputLabel/>
+                                <h:inputHidden id="idCity" value="#{manBeanCity.city.idCity}"/>
+
+                                <h:outputLabel for="nameCity" value="Name.:"/>
+                                <p:inputText id="nameCity" size="30" value="#{manBeanCity.city.name}"
+                                             required="true" requiredMessage="Name required."/>
+
+                                <p:spacer width="10" />
                                 <p:commandButton value="Save" action="#{manBeanCity.addCity}"
-                                    image="ui-icon ui-icon-disk" update="@form :formtable"/>
+                                                 image="ui-icon ui-icon-disk" update="@form :formtable"/>
                                 <p:commandButton value="Cancel" actionListener="#{manBeanCity.cancelCity}"
-                                    image="ui-icon ui-icon-close" update="@form"/>
+                                                 image="ui-icon ui-icon-close" update="@form"/>
+
                             </p:panel>
                         </h:panelGrid>
                     </h:form>
                 </p:tab>
             </p:tabView>
-            
+
             <h:form id="formtable">
                 <p:growl id="msg1"/>
                 <p:dataTable id="idTable" var="property" value="#{manBeanCity.cities}"
@@ -60,6 +63,7 @@
                             <f:setPropertyActionListener target="#{manBeanCity.city}"
                                 value="#{property}"/>
                         </p:commandButton>
+                        <p:spacer width="30" />
                         <p:commandButton value="Remove" action="#{manBeanCity.deleteCity}"
                                 image="ui-icon ui-icon-close" update="@form">
                             <f:setPropertyActionListener target="#{manBeanCity.city}"

@@ -11,7 +11,7 @@ import java.util.List;
 public class TypeUser implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id_type_user", nullable = false)
     private Integer idTypeUser;
 

@@ -80,5 +80,5 @@ public class ControllerCity implements Serializable {
     public void setCity(City city) {
         this.city = city;
     }
-        
+
 }

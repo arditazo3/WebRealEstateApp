@@ -36,13 +36,17 @@
             <h:form>
                 <p:menubar styleClass="labelmenu">
 
-                    <p:menuitem value="Cities" url="/restrict/list-cities.faces"/>
+                    <p:menuitem value="Create user" action="#{controllerUser.cancelUser(null)}" ajax="false"/>
                     <p:spacer width="3px"/>
-                    <p:menuitem value="Users" action="#{controllerUser.cancelUser}" ajax="false"/>
-                    <p:spacer width="3px"/>
-                    <p:menuitem value="Users List" url="/restrict/users.faces"/>
+                    <p:menuitem value="List of users" url="/restrict/list-users.faces"/>
                     <p:spacer width="3px"/>
                     <p:menuitem value="Properties" action="#{manBeanProperty.cancelProperty}" ajax="false"/>
+                    <p:spacer width="3px"/>
+                    <p:menuitem value="Cities" url="/restrict/list-cities.faces"/>
+                    <p:spacer width="3px"/>
+                    <p:menuitem value="Sell a property" url="/restrict/sell-process.faces"/>
+                    <p:spacer width="3px"/>
+                    <p:menuitem value="List sales" url="/restrict/list-sales.faces"/>
 
                 </p:menubar>
             </h:form>
