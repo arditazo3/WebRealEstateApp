@@ -28,6 +28,10 @@
                             <p:inputText id="address" size="40" value="#{manBeanProperty.property.address}"
                                          required="true" requiredMessage="Required."/>
 
+                            <h:outputLabel for="surface" value="Surface Area.:"/>
+                            <p:inputText id="surface" size="40" value="#{manBeanProperty.property.surfaceArea}"
+                                         required="true" requiredMessage="Required."/>
+
                             <h:outputLabel for="city" value="Name of City.:"/>
                             <p:selectOneMenu id="city" value="#{  manBeanProperty.property.city.idCity}">
 
@@ -99,6 +103,7 @@
                             <f:setPropertyActionListener  value="#{property}"                          target="#{manBeanProperty.property}" />
                             <f:setPropertyActionListener  value="#{property.descrProperty}"            target="#{manBeanProperty.property.typeProperty}" />
                             <f:setPropertyActionListener  value="#{property.typeProperty}"             target="#{manBeanProperty.property.address}" />
+                            <f:setPropertyActionListener  value="#{property.surfaceArea}"             target="#{manBeanProperty.property.surfaceArea}" />
                             <f:setPropertyActionListener  value="#{property.address}"                  target="#{manBeanProperty.property.address}" />
                             <f:setPropertyActionListener  value="#{property.city.idCity }"             target="#{manBeanProperty.property.city.idCity }" />
                             <f:setPropertyActionListener  value="#{property.typeRegion.idTypeRegion }" target="#{manBeanProperty.property.typeRegion.idTypeRegion }" />

@@ -28,6 +28,9 @@ public class Property implements Serializable {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "surface_area")
+    private String surfaceArea;
+
     @ManyToOne(optional=false, fetch = FetchType.LAZY)
     @ForeignKey(name="address_city_key")
     @JoinColumn(name = "id_city", referencedColumnName="id_city")
@@ -159,5 +162,13 @@ public class Property implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getSurfaceArea() {
+        return surfaceArea;
+    }
+
+    public void setSurfaceArea(String surfaceArea) {
+        this.surfaceArea = surfaceArea;
     }
 }

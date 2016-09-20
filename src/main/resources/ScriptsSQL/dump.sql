@@ -118,10 +118,10 @@ CREATE TABLE type_address (
 INSERT INTO type_address (id_type_address,descr_type_address) VALUES
   (1,'Residential'),
   (2,'Commercial'),
-  (3,'RODOVIA'),
-  (4,'FAZENDA'),
+  (3,'Highway'),
+  (4,'Farm'),
   (5,'Industry'),
-  (6,'CHÁCARA'),
+  (6,'Bouncer'),
   (7,'Vila');
 
 
@@ -141,13 +141,11 @@ CREATE TABLE type_region (
 --
 
 INSERT INTO type_region (id_type_region,descr_type_region) VALUES
-  (1,'RUA'),
-  (2,'ALAMEDA'),
-  (3,'AVENIDA'),
-  (4,'VIELA'),
-  (5,'BECO'),
-  (6,'TRAVESSA'),
-  (7,'PRAÇA');
+  (1,'North'),
+  (2,'East'),
+  (3,'South'),
+  (4,'West'),
+  (5,'Center');
 
 
 
@@ -194,6 +192,7 @@ CREATE TABLE property (
   type_property varchar(255) NOT NULL,
   date_register date NOT NULL,
   address varchar(80) NOT NULL,
+  surface_area varchar(80) NOT NULL,
   id_city int(11) NOT NULL,
   id_type_region int(11) NOT NULL,
   id_user int(11) NOT NULL,
@@ -206,8 +205,8 @@ CREATE TABLE property (
     CONSTRAINT property_user_key FOREIGN KEY (id_user) REFERENCES user (id_user)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
-INSERT INTO property(descr_property, type_property, date_register, address, id_city, id_type_region, id_user) VALUES
-  ('Apartment', 'Apartment', now(), 'Groove Str', 1, 1, 1);
+INSERT INTO property(descr_property, type_property, date_register, address, surface_area, id_city, id_type_region, id_user) VALUES
+  ('Apartment', 'Apartment', now(), 'Groove Str', '250 m square', 1, 1, 1);
 
 --
 -- Definition of table address
