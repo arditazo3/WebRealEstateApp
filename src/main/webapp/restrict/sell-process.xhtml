@@ -8,6 +8,8 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="./../resources/main.xhtml">
 
+    <h:inputHidden id="log" value="#{manBeanLog.insertLog('Process of sell', manBeanUserLogged.getUserLogged())}"/>
+
     <ui:define name="tasks">
         <p:fieldset legend="Properties">
             <br/>

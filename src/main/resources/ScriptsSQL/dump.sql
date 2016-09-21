@@ -223,7 +223,6 @@ CREATE TABLE sales (
   PRIMARY KEY (id_sale),
   KEY sale_property_key (id_property),
   KEY sale_user_key (id_user),
-  UNIQUE KEY id_property (id_property),
   CONSTRAINT sale_property_key FOREIGN KEY (id_property) REFERENCES property (id_property),
   CONSTRAINT sale_user_key FOREIGN KEY (id_user) REFERENCES user (id_user)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
@@ -269,3 +268,19 @@ CREATE TABLE address (
 
 INSERT INTO address (id_address,street,code_street,zip,region,region_number,id_city,id_nation,id_user,id_type_address,id_type_region) VALUES
   (1,'AHFGSDGFS','11111-111',0,'WERTYUI',21,1,11,1,1,1);
+
+
+--
+-- Definition of table address
+--
+
+DROP TABLE IF EXISTS logs;
+CREATE TABLE logs (
+  id_logs int(11) NOT NULL AUTO_INCREMENT,
+  id_user int(11) DEFAULT NULL,
+  url varchar(80) DEFAULT NULL,
+  ip varchar(80) DEFAULT NULL,
+  PRIMARY KEY (id_logs),
+  KEY log_user_key (id_user),
+  CONSTRAINT log_user_key FOREIGN KEY (id_user) REFERENCES user (id_user)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;

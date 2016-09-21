@@ -8,8 +8,11 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="./../resources/main.xhtml">
 
+    <h:inputHidden id="log" value="#{manBeanLog.insertLog('List of cities', manBeanUserLogged.getUserLogged())}"/>
+
     <ui:define name="tasks">
         <p:fieldset legend="Cities">
+
             <br/>
             <p:tabView id="tbv1" dynamic="true" cache="true">
                 <p:tab title="City">

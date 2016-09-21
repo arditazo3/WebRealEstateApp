@@ -42,8 +42,6 @@ public class ControllerSale implements Serializable {
 
     public String editSale() {
 
-        sale = new Sale();
-
         return "/restrict/sell-process.faces";
     }
 
@@ -70,6 +68,13 @@ public class ControllerSale implements Serializable {
         saleDAO().update(sale);
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Updated successfully", ""));
+    }
+
+    public String deleteSale() {
+        saleDAO().remove(sale);
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Deleted successfully", ""));
+        return null;
     }
 
     public List<Sale> getSales() {

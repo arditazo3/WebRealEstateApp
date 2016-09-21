@@ -32,7 +32,7 @@ public class Sale implements Serializable {
 
 
     @OneToOne(optional=true, fetch= FetchType.LAZY)
-    @ForeignKey(name="address_user_key")
+    @ForeignKey(name="sale_user_key")
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     private User user;
 

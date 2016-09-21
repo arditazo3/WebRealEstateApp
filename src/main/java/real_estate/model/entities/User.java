@@ -60,6 +60,12 @@ public class User implements Serializable {
     @ForeignKey(name="sale_user_key")
     private Sale sale;
 
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @ForeignKey(name="log_user_key")
+    private List<Log> logs;
+
+
     public User() {
         this.gender = new Gender();
         this.typeUser = new TypeUser();
@@ -199,5 +205,11 @@ public class User implements Serializable {
         this.sale = sale;
     }
 
+    public List<Log> getLogs() {
+        return logs;
+    }
 
+    public void setLogs(List<Log> logs) {
+        this.logs = logs;
+    }
 }
