@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="67776657">
+  <component name="DataSourceManagerImpl" format="xml" hash="1665968206">
     <data-source source="LOCAL" name="web_real_estate_app" uuid="324adfec-b6de-44da-85e3-30e62419e9c7">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
