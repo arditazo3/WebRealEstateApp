@@ -8,11 +8,14 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="./../resources/main.xhtml">
 
-    <h:inputHidden id="log" value="#{manBeanLog.insertLog('List of users', manBeanUserLogged.getUserLogged())}"/>
+
 
     <ui:define name="tasks">
         <h:form>
             <p:growl id="msg0"/>
+
+            <h:inputHidden id="log" value="#{manBeanLog.insertLog('List of users', manBeanUserLogged.getUserLogged())}"/>
+
             <p:dataTable id="idTable" var="user" value="#{controllerUser.users}"
                          paginator="true" rows="10" emptyMessage="No records"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
